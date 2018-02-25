@@ -1,0 +1,51 @@
+{
+  "name": "cquteam",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "LanticGan",
+  "license": "GPL-3.0",
+  "scripts": {
+    "build": "NODE_ENV=development webpack --progress --config ./webpack.config.js",
+    "build:pro": "NODE_ENV=production webpack --progress --config ./webpack.config.js",
+    "start": "NODE_ENV=development webpack-dev-server --open",
+    "lint": "eslint -c ./.eslintrc ./src/"
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "dependencies": {
+    "lodash": "^4.17.5",
+    "mobx": "^3.5.1",
+    "mobx-react": "^4.4.2",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-router": "^4.2.0"
+  },
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.2",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "clean-webpack-plugin": "^0.1.18",
+    "css-loader": "^0.28.10",
+    "eslint": "^4.18.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-import": "2.7.0",
+    "eslint-plugin-jsx-a11y": "6.0.2",
+    "eslint-plugin-react": "7.4.0",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^1.1.9",
+    "html-webpack-plugin": "^2.30.1",
+    "node-sass": "^4.7.2",
+    "pre-commit": "^1.2.2",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.20.2",
+    "uglifyjs-webpack-plugin": "^1.2.2",
+    "url-loader": "^0.6.2",
+    "webpack": "3.5.5",
+    "webpack-dev-server": "2.7.1"
+  }
+}
