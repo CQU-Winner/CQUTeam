@@ -16,6 +16,7 @@ const config = {
             'mobx-react',
             'mobx',
             'react-router',
+            'react-router-dom',
             'lodash',
           ],
     },

@@ -34,7 +34,11 @@
       "class-methods-use-this": "off",
       "func-names": "off",
       "no-underscore-dangle": "off",
-      "camelcase": "off"
+      "camelcase": "off",
+      "jsx-a11y/anchor-is-valid": [ "error", {
+        "components": [ "Link" ],
+        "specialLink": [ "to" ]
+      }]
     },
     "parserOptions": {
       "ecmaFeatures": {
