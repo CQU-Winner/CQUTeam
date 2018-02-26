@@ -47,6 +47,9 @@ const config = {
                     options: {
                         presets: [
                             "env", "react"
+                        ],
+                        plugins: [
+                            ["import", { libraryName: "antd-mobile", style: "css" }]
                         ]
                     }
                 },
