@@ -1,14 +1,10 @@
 import React from 'react';
+import { observable } from 'mobx-react';
 import { TabBar } from 'antd-mobile'; 
 import './BottomTabBar.less';
 
 class BottomTabBar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedTab: 'teams',
-    };
-  }
+  @observable selectedTab = "teams";
 
   linkTo = (path) => {
     this.props.history.push(path);
