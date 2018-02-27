@@ -1,20 +1,24 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import Teams from '../teams';
-import Competitions from '../competitions';
+import Information from '../information';
 import Accounts from '../accounts';
-import BottomTabBar from './BottomTabBar';
+import BottomTabBar from './TabBar/BottomTabBar';
+
 
 class Layout extends React.Component {
   render() {
     return (
-      <div className="viewportWrapper">
-        <div className="contentWrapper">
-          <Route path="/teams" component={Teams} />
-          <Route path="/accounts" component={Accounts} />
-          <Route path="/competitions" component={Competitions} />
+      <div className="primary-layout">
+        <div className="content-wrapper">
+          <Switch>
+            <Route path="/teams" component={Teams} />
+            <Route path="/accounts" component={Accounts} />
+            <Route path="/information" component={Information} />
+            <Redirect to="/teams" />
+          </Switch>
         </div>
-        <BottomTabBar />
+        <BottomTabBar history={this.props.history} />
       </div>
     );
   }
