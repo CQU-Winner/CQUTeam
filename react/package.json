@@ -4,6 +4,10 @@
   "main": "index.js",
   "author": "LanticGan",
   "license": "GPL-3.0",
+  "theme": {
+    "brand-primary": "#F8C3CD",
+    "brand-primary-tap": "#F4A7B9"
+  },
   "scripts": {
     "build": "NODE_ENV=development webpack --progress --config ./webpack.config.js",
     "build:pro": "NODE_ENV=production webpack --progress --config ./webpack.config.js",
@@ -28,6 +32,7 @@
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.2",
     "babel-loader": "^7.1.2",
+    "babel-plugin-import": "^1.6.5",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "clean-webpack-plugin": "^0.1.18",
@@ -41,9 +46,10 @@
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.9",
     "html-webpack-plugin": "^2.30.1",
+    "less": "2.3.1",
+    "less-loader": "^4.0.6",
     "node-sass": "^4.7.2",
     "pre-commit": "^1.2.2",
-    "sass-loader": "^6.0.6",
     "style-loader": "^0.20.2",
     "uglifyjs-webpack-plugin": "^1.2.2",
     "url-loader": "^0.6.2",
