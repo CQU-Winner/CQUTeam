@@ -47,9 +47,10 @@ const config = {
                     loader: "babel-loader",
                     options: {
                         presets: [
-                            "env", "react"
+                            "stage-0", "react"
                         ],
                         plugins: [
+                            'transform-runtime',
                             ["import", { libraryName: "antd-mobile", style: true }]
                         ]
                     }
