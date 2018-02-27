@@ -19,6 +19,7 @@ const config = {
             'react-router',
             'react-router-dom',
             'lodash',
+            'axios',
           ],
     },
 
