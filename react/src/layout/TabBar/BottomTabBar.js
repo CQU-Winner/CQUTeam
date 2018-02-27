@@ -1,10 +1,11 @@
 import React from 'react';
-import { observable } from 'mobx-react';
+import { observable } from 'mobx';
 import { TabBar } from 'antd-mobile'; 
 import './BottomTabBar.less';
 
+
 class BottomTabBar extends React.Component {
-  @observable selectedTab = "teams";
+  @observable selectedTab = 'teams';
 
   linkTo = (path) => {
     this.props.history.push(path);
@@ -26,11 +27,9 @@ class BottomTabBar extends React.Component {
             selectedIcon={
               <div className="information-item-selected" />
             }
-            selected={this.state.selectedTab === 'information'}
+            selected={this.selectedTab === 'information'}
             onPress={() => {
-              this.setState({
-                selectedTab: 'information',
-              });
+              this.selectedTab = 'information';
               this.linkTo('/information');
             }}
           />
@@ -43,11 +42,9 @@ class BottomTabBar extends React.Component {
             selectedIcon={
               <div className="teams-item-selected" />
             }
-            selected={this.state.selectedTab === 'teams'}
+            selected={this.selectedTab === 'teams'}
             onPress={() => {
-              this.setState({
-                selectedTab: 'teams',
-              });
+              this.selectedTab = 'teams';
               this.linkTo('/team');
             }}
           />
@@ -60,11 +57,9 @@ class BottomTabBar extends React.Component {
             selectedIcon={
               <div className="accounts-item-selected" />
             }
-            selected={this.state.selectedTab === 'accounts'}
+            selected={this.selectedTab === 'accounts'}
             onPress={() => {
-              this.setState({
-                selectedTab: 'accounts',
-              });
+              this.selectedTab = 'accounts';
               this.linkTo('/accounts');
             }}
           /> 

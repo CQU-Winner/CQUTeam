@@ -1,6 +1,6 @@
 /* eslint-disable */
 const webpack = require('webpack');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
@@ -36,22 +36,23 @@ const config = {
     module: {
     	rules: [
             {
-                enforce: "pre",
+                enforce: 'pre',
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: "eslint-loader",
+                loader: 'eslint-loader',
             },
     		{
     			test: /\.js$/,
     			use: {
-                    loader: "babel-loader",
+                    loader: 'babel-loader',
                     options: {
                         presets: [
-                            "stage-0", "react"
+                            'stage-0', 'react'
                         ],
                         plugins: [
                             'transform-runtime',
-                            ["import", { libraryName: "antd-mobile", style: true }]
+                            'transform-decorators-legacy',
+                            ['import', { libraryName: 'antd-mobile', style: true }]
                         ]
                     }
                 },
@@ -61,11 +62,11 @@ const config = {
                 test: /\.less$/,
                 use: ExtractTextPlugin.extract({
                     use: [{
-                        loader: "css-loader"
+                        loader: 'css-loader'
                     }, {
-                        loader: "less-loader", options: {modifyVars: theme}
+                        loader: 'less-loader', options: {modifyVars: theme}
                     }],
-                    fallback: "style-loader"
+                    fallback: 'style-loader'
                 }),
             },
             {
@@ -91,7 +92,7 @@ const config = {
 
     plugins: [
         new ExtractTextPlugin({
-            filename: "[name].[contenthash].css",
+            filename: '[name].[contenthash].css',
             disable: DEV
         }),
         new HtmlWebpackPlugin({
