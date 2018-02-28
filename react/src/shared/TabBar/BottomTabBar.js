@@ -45,7 +45,7 @@ class BottomTabBar extends React.Component {
             selected={this.selectedTab === 'teams'}
             onPress={() => {
               this.selectedTab = 'teams';
-              this.linkTo('/team');
+              this.linkTo('/teams');
             }}
           />
           <TabBar.Item 
