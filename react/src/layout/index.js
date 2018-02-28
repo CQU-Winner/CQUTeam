@@ -3,8 +3,8 @@ import { Route, Switch } from 'react-router-dom';
 import Teams from '../teams';
 import Information from '../information';
 import Accounts from '../accounts';
-import BottomTabBar from './TabBar/BottomTabBar';
-
+import BottomTabBar from '../shared/TabBar/BottomTabBar';
+import './layout.less';
 
 class Layout extends React.Component {
   render() {
