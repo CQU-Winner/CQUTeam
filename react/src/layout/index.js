@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Teams from '../teams';
 import Information from '../information';
 import Accounts from '../accounts';
@@ -15,7 +15,7 @@ class Layout extends React.Component {
             <Route path="/teams" component={Teams} />
             <Route path="/accounts" component={Accounts} />
             <Route path="/information" component={Information} />
-            <Redirect to="/teams" />
+            <Route component={Teams} />
           </Switch>
         </div>
         <BottomTabBar history={this.props.history} />
