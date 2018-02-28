@@ -1,12 +1,15 @@
+@avatarSize: 32px;
+@avatarPosition: 25px;
+
 .teams-list {
   .am-list-item {
-    padding-left: 25px;
+    padding-left: @avatarPosition;
     .am-list-thumb {
-      margin-right: 25px;
+      margin-right: @avatarPosition;
+      img {
+        width: @avatarSize;
+        height: @avatarSize;
+      }
     }
-  }
-  img {
-    width: 32px;
-    height: 32px;
   }
 }
