@@ -1,5 +1,6 @@
 import React from 'react';
 import { observer } from 'mobx-react';
+import TeamsList from '../components/TeamsList';
 import TeamsStore from '../stores/TeamsStore';
 
 @observer
@@ -10,9 +11,7 @@ class TeamsContainer extends React.Component {
 
   render() {
     return (
-      <div>
-        t
-      </div>
+      <TeamsList />
     );
   }
 }
