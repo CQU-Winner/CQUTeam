@@ -1,10 +1,11 @@
 import React from 'react';
-import TeamsContainer from './containers/TeamsContainer';
+import { Route } from 'react-router';
+import TeamsListContainer from './containers/TeamsListContainer';
 
 class Teams extends React.Component {
   render() {
     return (
-      <TeamsContainer />
+      <Route path={this.props.match.path} exact component={TeamsListContainer} />
     );
   }
 }
