@@ -1,0 +1,41 @@
+@timeIcon: url('./assets/time.svg');
+@timeIconSelected: url('./assets/time-selected.svg');
+@hotIcon: url('./assets/hot.svg');
+@hotIconSelected: url('./assets/hot-selected.svg');
+@typeTabIconSize: 22px;
+
+.type-tab-icon {
+  width: @typeTabIconSize;
+  height: @typeTabIconSize;
+  margin: 20px;
+  background-position: center center;
+  background-size: @typeTabIconSize;
+  background-repeat: no-repeat;
+}
+
+.tab-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .hot {
+    .type-tab-icon;
+    background-image: @hotIcon;
+  }
+  
+  .time {
+    .type-tab-icon;
+    background-image: @timeIcon;
+  }
+
+  .hot-selected {
+    .type-tab-icon;
+    background-image: @hotIconSelected;
+  }
+
+  .time-selected {
+    .type-tab-icon;
+    background-image: @timeIconSelected;
+  }
+}
+

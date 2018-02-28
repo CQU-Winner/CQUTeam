@@ -5,7 +5,12 @@ class TeamsStore {
   url = 'http://www.cquwinner.com/api/groups';
   @observable loading = false;
   @observable error = false;
+  @observable ordering = 'hot';
   @observable teamsList = [];
+
+  @action switchOrdering(type) {
+    this.ordering = type;
+  }
 
   @action teamsListInit() {
     this.loading = true;
