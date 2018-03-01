@@ -1,15 +1,15 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import TeamsList from '../components/TeamsList';
+import OrderingSwitchContainer from './OrderingSwitchContainer';
 import TeamsStore from '../stores/TeamsStore';
 import NavBar from '../../shared/NavBar/TopNavBar';
 import SearchBar from '../../shared/SearchBar/SearchBar';
-import TypeTab from '../../shared/TypeTab/TypeTab';
 
 @observer
 class TeamsListContainer extends React.Component {
   componentDidMount() {
-    TeamsStore.teamsListInit();
+    TeamsStore.fetchTeamsList();
   }
 
   getTeams = () => {
@@ -24,12 +24,11 @@ class TeamsListContainer extends React.Component {
   }
 
   render() {
-    const { ordering } = TeamsStore;
     return (
       <div>
         <NavBar title="组队信息" showAddIcon />
         <SearchBar />
-        <TypeTab ordering={ordering} switchOrdering={TeamsStore.switchOrdering} />
+        <OrderingSwitchContainer />
         <TeamsList teams={this.getTeams()} />
       </div>
     );
