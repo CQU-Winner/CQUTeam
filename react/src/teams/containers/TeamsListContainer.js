@@ -9,7 +9,7 @@ import SearchBar from '../../shared/SearchBar/SearchBar';
 @observer
 class TeamsListContainer extends React.Component {
   componentDidMount() {
-    TeamsStore.teamsListInit();
+    TeamsStore.fetchTeamsList();
   }
 
   getTeams = () => {
