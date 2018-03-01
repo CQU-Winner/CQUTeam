@@ -1,5 +1,6 @@
 import React from 'react';
 import { observer } from 'mobx-react';
+import TypePicker from './TypePicker';
 import TeamsStore from '../stores/TeamsStore';
 import '../style/OrderingSwitch.less';
 
@@ -7,22 +8,24 @@ import '../style/OrderingSwitch.less';
 class OrderingSwitchContainer extends React.Component {
   renderOrderingSwitch = () => {
     return (
-      <div>
+      [<div 
+        key="hot"
+        className={
+        `${TeamsStore.ordering === 'hot' ? 'hot-selected' : 'hot'}`}
+        // compatibility
+        onClick={() => { TeamsStore.switchOrdering('hot'); }}
+        onKeyUp={() => { TeamsStore.switchOrdering('hot'); }}
+      />,
         <div 
-          className={
-          `${TeamsStore.ordering === 'hot' ? 'hot-selected' : 'hot'}`}
-          // compatibility
-          onClick={() => { TeamsStore.switchOrdering('hot'); }}
-          onKeyUp={() => { TeamsStore.switchOrdering('hot'); }}
-        />
-        <div 
+          key="time"
           className={
           `${TeamsStore.ordering === 'time' ? 'time-selected' : 'time'}`}
           // compatibility
           onClick={() => { TeamsStore.switchOrdering('time'); }}
           onKeyUp={() => { TeamsStore.switchOrdering('time'); }}
-        />
-      </div>
+        />,
+        <TypePicker key="type" />,
+      ]
     );
   }
 

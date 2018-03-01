@@ -2,6 +2,8 @@
 @timeIconSelected: url('../assets/time-selected.svg');
 @hotIcon: url('../assets/hot.svg');
 @hotIconSelected: url('../assets/hot-selected.svg');
+@typeIcon: url('../assets/type.svg');
+@typeIconSelected: url('../assets/type-selected.svg');
 @typeTabIconSize: 22px;
 
 .type-tab-icon {
@@ -28,6 +30,11 @@
     background-image: @timeIcon;
   }
 
+  .type {
+    .type-tab-icon;
+    background-image: @typeIcon;
+  }
+
   .hot-selected {
     .type-tab-icon;
     background-image: @hotIconSelected;
@@ -36,6 +43,10 @@
   .time-selected {
     .type-tab-icon;
     background-image: @timeIconSelected;
+  }
+  .type-selected {
+    .type-tab-icon;
+    background-image: @typeIconSelected;
   }
 }
 

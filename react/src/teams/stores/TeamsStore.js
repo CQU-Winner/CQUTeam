@@ -6,7 +6,12 @@ class TeamsStore {
   @observable loading = false;
   @observable error = false;
   @observable ordering = 'hot';
+  @observable teamType = ['全部'];
   @observable teamsList = [];
+
+  @action changeTeamType(type) {
+    this.teamType = type;
+  }
 
   @action switchOrdering(type) {
     this.ordering = type;
