@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { List } from 'antd-mobile';
+import { Link } from 'react-router-dom';
 import '../style/TeamsList.less';
 
 const { Item } = List;
@@ -18,10 +19,12 @@ class TeamsList extends React.Component {
   renderTeamsItems = () => {
     return this.props.teams.map((team) => {
       return (
-        <Item key={team.id} thumb={team.avatar} multipleLine>
-          {team.title} 
-          <Brief>{team.intro}</Brief>
-        </Item>
+        <Link key={team.id} to={`/teams/${team.id}`}>
+          <Item thumb={team.avatar} multipleLine>
+            {team.title} 
+            <Brief>{team.intro}</Brief>
+          </Item>
+        </Link>
       );
     });
   }

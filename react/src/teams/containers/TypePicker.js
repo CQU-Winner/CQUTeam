@@ -7,7 +7,7 @@ import PickerItem from '../components/PickerItem';
 const data = [
   {
     label: '全部',
-    value: '全部',
+    value: '',
   },
   {
     label: '应用开发',
@@ -18,7 +18,7 @@ const data = [
 @observer
 class TypePicker extends React.Component {
   renderTypeIcon = () => (
-    TeamsStore.teamType[0] === '全部' ? 'type' : 'type-selected'
+    TeamsStore.teamType[0] === '' ? 'type' : 'type-selected'
   )
 
   render() {

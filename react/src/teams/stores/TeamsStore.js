@@ -1,19 +1,19 @@
 import { observable, action } from 'mobx';
 import axios from 'axios';
-import { Observable } from 'rx';
 
 class TeamsStore {
   url = 'http://www.cquwinner.com/api/groups';
   @observable loading = false;
   @observable error = false;
   @observable ordering = 'hot';
-  @Observable page = 0;
-  @observable teamType = ['全部'];
+  @observable wd='';
+  @observable page = 0;
+  @observable teamType = [''];
   @observable teamsList = [];
 
-  @action changeTeamType(type) {
-    this.teamType = type;
-    this.fetchTeamsList(this.ordering, this.page, type);
+  @action changeTeamType(teamtype) {
+    this.teamType = teamtype;
+    this.fetchTeamsList();
   }
 
   @action switchOrdering(sort) {
@@ -21,17 +21,20 @@ class TeamsStore {
     this.fetchTeamsList();
   }
 
-  @action fetchTeamsList(sort = 'late', page = 0, ...other) {
+  @action changeWd(wd) {
+    this.wd = wd;
+    this.fetchTeamsList();
+  }
+
+  @action fetchTeamsList() {
     this.loading = true;
-    const params = {};
-    for (const i of other) {
-      params.i = i;
-    }
+    const [wd, sort, type, page] = [this.wd, this.ordering, this.teamType[0], this.page];
     axios.get(this.url, {
       params: {
+        wd,
         sort,
+        type,
         page,
-        ...params,
       },
     })
       .then((res) => {

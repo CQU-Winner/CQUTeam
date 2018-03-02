@@ -14,15 +14,15 @@ class OrderingSwitchContainer extends React.Component {
         `${TeamsStore.ordering === 'hot' ? 'hot-selected' : 'hot'}`}
         // compatibility
         onClick={() => { TeamsStore.switchOrdering('hot'); }}
-        onKeyUp={() => { TeamsStore.switchOrdering('hot'); }}
+        onKeyUp={() => {}}
       />,
         <div 
           key="time"
           className={
-          `${TeamsStore.ordering === 'time' ? 'time-selected' : 'time'}`}
+          `${TeamsStore.ordering === 'late' ? 'time-selected' : 'time'}`}
           // compatibility
-          onClick={() => { TeamsStore.switchOrdering('time'); }}
-          onKeyUp={() => { TeamsStore.switchOrdering('time'); }}
+          onClick={() => { TeamsStore.switchOrdering('late'); }}
+          onKeyUp={() => {}}
         />,
         <TypePicker key="type" />,
       ]
