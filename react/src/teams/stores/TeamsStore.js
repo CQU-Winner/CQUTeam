@@ -21,6 +21,11 @@ class TeamsStore {
     this.fetchTeamsList();
   }
 
+  @action changeWd(wd) {
+    this.wd = wd;
+    this.fetchTeamsList();
+  }
+
   @action fetchTeamsList() {
     this.loading = true;
     const [wd, sort, type, page] = [this.wd, this.ordering, this.teamType[0], this.page];
