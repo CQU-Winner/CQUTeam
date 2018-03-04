@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { List } from 'antd-mobile';
+import { List, Button } from 'antd-mobile';
 import '../style/TeamsDetail.less';
 
 class TeamsDetail extends React.Component {
@@ -74,6 +74,9 @@ class TeamsDetail extends React.Component {
           <List className="teams-list">
             {this.renderFounder(founder)}
           </List>
+          <div className="say-hello">
+            <Button type="ghost" size="small">打招呼</Button>
+          </div>
         </div>
       );
     }
@@ -82,3 +85,4 @@ class TeamsDetail extends React.Component {
 }
 
 export default TeamsDetail;
+
