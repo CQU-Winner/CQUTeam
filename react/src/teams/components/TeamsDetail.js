@@ -1,28 +1,80 @@
 import React from 'react';
-import { Card, WingBlank, WhiteSpace } from 'antd-mobile';
+import { Link } from 'react-router-dom';
+import { List } from 'antd-mobile';
+import '../style/TeamsDetail.less';
 
 class TeamsDetail extends React.Component {
+  renderCardTitle = (title) => {
+    return (
+      <div className="card-title-lv2">
+        <div className="line" />
+        <div className="text">
+          {title}
+        </div>
+        <div className="line" />
+      </div>
+    );
+  }
+
+  renderMembers = (members) => {
+    const membersList = [];
+    for (const member of members) {
+      // 这个地方的lint似乎出了问题,先留着.
+      membersList.push(  // eslint-disable-line
+        <Link key={member.id} to="/">
+          <div className="avatar">
+            <img src={member.avatar} alt="组员" />
+          </div>
+        </Link>);
+    }
+    return membersList;
+  }
+
+  renderFounder = (founder) => {
+    const { Item } = List;
+    const { Brief } = Item;
+    return (
+      <Link to="/">
+        <Item thumb={founder.avatar} multipleLine>
+          {founder.name} 
+          <Brief>{founder.resume}</Brief>
+        </Item>
+      </Link>
+    );
+  }
+
   render() {
     if (this.props.detail) {
-      const { founder } = this.props.detail;
+      const {
+        compet, title, demand, members, founder,
+      } = this.props.detail;
       return (
-        <WingBlank size="lg">
-          <WhiteSpace size="lg" />
-          <Card>
-            <Card.Header
-              title={founder.name}
-              thumb={founder.avatar}
-              extra={founder.resume}
-            />
-            <Card.Body>
-              <div>
-                t
-              </div>
-            </Card.Body>
-            <Card.Footer content="footer content" extra={<div>extra footer content</div>} />
-          </Card>
-          <WhiteSpace size="lg" />
-        </WingBlank>
+        <div className="card">
+          <div className="card-title-lv1">
+            {title}
+          </div>
+          {this.renderCardTitle('比赛信息')}
+          <div className="card-content">
+            <p>比赛名称:{compet.title}</p>
+            <p>比赛类别:{compet.type}</p>
+            <p>比赛截止时间:{compet.ddl}</p>
+            <p>比赛详情:{compet.url}</p>
+          </div>
+          {this.renderCardTitle('招募需求')}
+          <div className="card-content">
+            <p>{demand}</p>
+          </div>
+          {this.renderCardTitle('团队成员')}
+          <div className="card-content">
+            <div className="members">
+              {this.renderMembers(members)}
+            </div>
+          </div>
+          {this.renderCardTitle('发起人')}
+          <List className="teams-list">
+            {this.renderFounder(founder)}
+          </List>
+        </div>
       );
     }
     return null;

@@ -4,9 +4,6 @@ import { List } from 'antd-mobile';
 import { Link } from 'react-router-dom';
 import '../style/TeamsList.less';
 
-const { Item } = List;
-const { Brief } = Item;
-
 class TeamsList extends React.Component {
   static propTypes = {
     teams: PropTypes.array,
@@ -17,6 +14,8 @@ class TeamsList extends React.Component {
   }
 
   renderTeamsItems = () => {
+    const { Item } = List;
+    const { Brief } = Item;
     return this.props.teams.map((team) => {
       return (
         <Link key={team.id} to={`/teams/${team.id}`}>
