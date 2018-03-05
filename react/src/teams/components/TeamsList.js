@@ -1,18 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { List } from 'antd-mobile';
 import { Link } from 'react-router-dom';
 import '../style/TeamsList.less';
 
 class TeamsList extends React.Component {
-  static propTypes = {
-    teams: PropTypes.array,
-  }
-
-  static defaultProps = {
-    teams: [],
-  }
-
   renderTeamsItems = () => {
     const { Item } = List;
     const { Brief } = Item;

@@ -21,7 +21,7 @@ class TeamsDetail extends React.Component {
     for (const member of members) {
       // 这个地方的lint似乎出了问题,先留着.
       membersList.push(  // eslint-disable-line
-        <Link key={member.id} to="/">
+        <Link key={member.id} to={`/accounts/${member.id}`}>
           <div className="avatar">
             <img src={member.avatar} alt="组员" />
           </div>
@@ -30,11 +30,11 @@ class TeamsDetail extends React.Component {
     return membersList;
   }
 
-  renderFounder = (founder) => {
+  renderFounder = (founder, self = false) => {
     const { Item } = List;
     const { Brief } = Item;
     return (
-      <Link to="/">
+      <Link to={`/accounts/${self ? 'slef' : founder.id}`}>
         <Item thumb={founder.avatar} multipleLine>
           {founder.name} 
           <Brief>{founder.resume}</Brief>
@@ -46,7 +46,7 @@ class TeamsDetail extends React.Component {
   render() {
     if (this.props.detail) {
       const {
-        compet, title, demand, members, founder,
+        compet, title, demand, members, founder, self,
       } = this.props.detail;
       return (
         <div className="card">
@@ -72,7 +72,7 @@ class TeamsDetail extends React.Component {
           </div>
           {this.renderCardTitle('发起人')}
           <List className="teams-list">
-            {this.renderFounder(founder)}
+            {this.renderFounder(founder, self)}
           </List>
           <div className="say-hello">
             <Button type="ghost" size="small">打招呼</Button>
