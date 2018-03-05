@@ -1,10 +1,13 @@
 import React from 'react';
-import AccountsContainer from './containers/TeamsContainer';
+import { Route, Switch } from 'react-router';
+import AccountsContainer from './containers/AccountsContainer';
 
 class Accounts extends React.Component {
   render() {
     return (
-      <AccountsContainer />
+      <Switch>
+        <Route path="/accounts/:userID" component={AccountsContainer} />
+      </Switch>
     );
   }
 }
