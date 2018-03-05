@@ -19,8 +19,11 @@ class AccountsContainer extends React.Component {
   render() {
     return (
       <div>
-        {AccountsStore.userProfile ? <AccountsProfile /> 
-        : <Authentication />}
+        {AccountsStore.userProfile ? 
+          <AccountsProfile 
+            profile={AccountsStore.userProfile} 
+            list={AccountsStore.historyList} 
+          /> : <Authentication />}
       </div>
     );
   }

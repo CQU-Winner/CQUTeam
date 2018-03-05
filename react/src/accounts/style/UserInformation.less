@@ -1,0 +1,24 @@
+@avatarSize:60px;
+
+.information-container {
+  display: flex;
+  height: 250px;
+  padding: 20px;
+  background: #fff;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .avatar {
+    width: @avatarSize;
+    height: @avatarSize;
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+    }
+  }
+  .name {
+    margin: 10px;
+    font-weight: 500;
+  }
+}
