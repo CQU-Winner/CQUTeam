@@ -4,6 +4,7 @@ import { StickyContainer, Sticky } from 'react-sticky';
 import NavBar from '../../shared/NavBar/TopNavBar';
 import UserInformation from './UserInformation';
 import TeamsList from '../../teams/components/TeamsList';
+import SayHello from './SayHello';
 
 class AccountsProfile extends React.Component {
   tabs = [
@@ -36,12 +37,7 @@ class AccountsProfile extends React.Component {
           >
             <UserInformation user={this.props.profile} />
             <TeamsList teams={this.props.list} />
-            <div style={{
-              display: 'flex', alignItems: 'center', justifyContent: 'center', height: '250px', backgroundColor: '#fff',
-              }}
-            >
-              Content of third tab
-            </div>
+            <SayHello greetings={this.props.profile.greetings} />
           </Tabs>
         </StickyContainer>
       </div>
