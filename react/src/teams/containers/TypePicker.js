@@ -3,17 +3,7 @@ import { observer } from 'mobx-react';
 import { Picker } from 'antd-mobile';
 import TeamsStore from '../stores/TeamsStore';
 import PickerItem from '../components/PickerItem';
-
-const data = [
-  {
-    label: '全部',
-    value: '',
-  },
-  {
-    label: '应用开发',
-    value: '应用开发',
-  },
-];
+import { competitionType } from '../../utils/data';
 
 @observer
 class TypePicker extends React.Component {
@@ -24,7 +14,7 @@ class TypePicker extends React.Component {
   render() {
     return (
       <Picker 
-        data={data} 
+        data={competitionType} 
         cols={1} 
         title="选择比赛类型" 
         value={TeamsStore.teamType}
