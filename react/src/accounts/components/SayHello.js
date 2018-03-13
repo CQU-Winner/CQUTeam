@@ -1,5 +1,5 @@
 import React from 'react';
-import { SegmentedControl, Card, WingBlank, WhiteSpace, Tag } from 'antd-mobile';
+import { SegmentedControl, Card, WingBlank, WhiteSpace, Tag, Button } from 'antd-mobile';
 
 class SayHello extends React.Component {
   onChange = (e) => {
@@ -61,12 +61,15 @@ class SayHello extends React.Component {
             <Card.Header
               title="甘宇廷"
               thumb="https://cloud.githubusercontent.com/assets/1698185/18039916/f025c090-6dd9-11e6-9d86-a4d48a1bf049.png"
-              extra={<Tag small>待通过</Tag>}
+              extra={this.renderTag('pending')}
             />
-            <Card.Body>
+            <Card.Body style={{ marginBottom: '10px' }}>
               <div>联系方式:</div>
             </Card.Body>
-            <Card.Footer content="footer content" extra={<div>extra footer content</div>} />
+            <Card.Footer 
+              content={<Button type="ghost" inline size="small">拒绝</Button>} 
+              extra={<Button type="ghost" inline size="small">同意</Button>} 
+            />
           </Card>
           <WhiteSpace size="lg" />
         </WingBlank>

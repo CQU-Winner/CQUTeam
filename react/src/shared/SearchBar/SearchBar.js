@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { SearchBar } from 'antd-mobile';
 import TeamsStore from '../../teams/stores/TeamsStore';
+import PostPageStore from '../../postpage/stores/PostPageStore';
 
 class CustomSearchBar extends React.Component {
   static propTypes = {
@@ -12,6 +13,9 @@ class CustomSearchBar extends React.Component {
     switch (this.props.store) {
       case 'teamsStore':
         TeamsStore.changeWd(val);
+        break;
+      case 'postPageStore':
+        PostPageStore.searchingMembers(val);
         break;
       default:
     }
