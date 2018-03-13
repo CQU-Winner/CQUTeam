@@ -3,7 +3,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import Teams from '../teams';
 import Information from '../information';
 import Accounts from '../accounts';
-import PostPage from '../shared/PostPage/PostPage';
+import PostPage from '../postpage/containers/PostPage';
 import BottomTabBar from '../shared/TabBar/BottomTabBar';
 import './layout.less';
 
