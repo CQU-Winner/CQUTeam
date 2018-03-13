@@ -1,26 +1,14 @@
 import React from 'react';
-import { ImagePicker, Modal } from 'antd-mobile';
+import { ImagePicker, Modal, List, Checkbox } from 'antd-mobile';
+import { observer } from 'mobx-react';
+import PostPageStore from '../stores/PostPageStore';
 import SearchBar from '../../shared/SearchBar/SearchBar';
 
-const data = [{
-  url: 'https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg',
-  id: '2121',
-}, {
-  url: 'https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg',
-  id: '2122',
-}];
-
+@observer
 class GroupsPicker extends React.Component {
-  state = {
-    files: data,
-    modal: false,
-  };
-
   onChange = (files, type, index) => {
     console.log(files, type, index);
-    this.setState({
-      files,
-    });
+    PostPageStore.changeMembers(files);
   };
 
   onAddImageClick = (e) => {
@@ -31,9 +19,7 @@ class GroupsPicker extends React.Component {
     //     id: '3',
     //   }),
     // });
-    this.setState({
-      modal: true,
-    });
+    PostPageStore.openModal();
   };
 
   onTabChange = (key) => {
@@ -41,33 +27,48 @@ class GroupsPicker extends React.Component {
   };
 
   onClose = () => {
-    this.setState({
-      modal: false,
-    });
+    PostPageStore.closeModal();
+  }
+
+  onSelected = (val) => {
+    const member = {
+      url: val.avatar,
+      id: val.id,
+      name: val.name,
+      resume: val.resume,
+    };
+    PostPageStore.pushMember(member);
   }
 
   render() {
-    const { files } = this.state;
+    const { CheckboxItem } = Checkbox;
     return (
       <div>
         <ImagePicker
-          files={files}
+          files={PostPageStore.members}
           onChange={this.onChange}
           onImageClick={(index, fs) => console.log(index, fs)}
-          selectable={files.length < 5}
+          selectable={PostPageStore.members.length < 5}
           onAddImageClick={this.onAddImageClick}
         />
         <Modal
-          visible={this.state.modal}
+          visible={PostPageStore.modal}
           transparent
           maskClosable={false}
           onClose={this.onClose}
           title="搜索队友"
-          footer={[{ text: 'Ok', onPress: () => { console.log('ok'); this.onClose('modal1')(); } }]}
+          footer={[{ text: 'Ok', onPress: () => { console.log('ok'); this.onClose(); } }]}
           wrapProps={{ onTouchStart: this.onWrapTouchStart }}
         >
-          <div style={{ height: 400, overflow: 'scroll' }}>
-            <SearchBar />
+          <div style={{ height: 400, overflow: 'scroll' }} >
+            <SearchBar store="postPageStore" />
+            <List renderHeader={() => '成员列表'}>
+              {PostPageStore.membersSearched.map(member => (
+                <CheckboxItem key={member.id} onChange={() => this.onSelected(member)}>
+                  {member.name}
+                </CheckboxItem>
+              ))}
+            </List>
           </div>
         </Modal>
       </div>
