@@ -1,9 +1,10 @@
 import React from 'react';
-import { List, InputItem, Picker, DatePicker, TextareaItem } from 'antd-mobile';
+import { List, InputItem, Picker, DatePicker, TextareaItem, Button } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import TopNavBar from '../../shared/NavBar/TopNavBar';
 import { competitionType } from '../../utils/data';
 import GroupsPicker from './GroupsPicker';
+import '../style/PostPage.less';
 
 class PostPage extends React.Component {
   submit = () => {
@@ -17,7 +18,7 @@ class PostPage extends React.Component {
     return (
       <div style={{ marginBottom: '50px' }}>
         <TopNavBar title="需求发布" />
-        <List renderHeader={() => '详情描述'}>
+        <List className="postList" renderHeader={() => '详情描述'}>
           <InputItem
             {...getFieldProps('title')}
             clear
@@ -66,7 +67,7 @@ class PostPage extends React.Component {
           >
             团队现有成员
           </div>
-          <GroupsPicker />
+          <GroupsPicker history={this.props.history} />
           <div 
             className="am-list-header"
             style={{ background: '#f5f5f9' }}
@@ -99,7 +100,13 @@ class PostPage extends React.Component {
            qq号
           </InputItem>
 
-          <button onClick={this.submit}>submit</button>
+          <Button
+            style={{ margin: '20px 140px 0 140px' }}
+            type="ghost" 
+            onClick={this.submit}
+          >
+            提交
+          </Button>
         </List>
       </div>
     );

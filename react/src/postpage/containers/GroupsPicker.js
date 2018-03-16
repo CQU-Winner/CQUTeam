@@ -40,6 +40,12 @@ class GroupsPicker extends React.Component {
     PostPageStore.pushMember(member);
   }
 
+  linkToProfile = (index, fs) => {
+    const { id } = fs[index];
+    const path = `/accounts/${id}`;
+    this.props.history.push(path);
+  }
+
   render() {
     const { CheckboxItem } = Checkbox;
     return (
@@ -47,7 +53,7 @@ class GroupsPicker extends React.Component {
         <ImagePicker
           files={PostPageStore.members}
           onChange={this.onChange}
-          onImageClick={(index, fs) => console.log(index, fs)}
+          onImageClick={this.linkToProfile}
           selectable={PostPageStore.members.length < 5}
           onAddImageClick={this.onAddImageClick}
         />
