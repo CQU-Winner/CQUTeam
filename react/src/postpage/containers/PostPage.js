@@ -1,15 +1,29 @@
 import React from 'react';
-import { List, InputItem, Picker, DatePicker, TextareaItem, Button } from 'antd-mobile';
+import {
+  List, InputItem, Picker, DatePicker, 
+  TextareaItem, Button, Toast,
+} from 'antd-mobile';
 import { createForm } from 'rc-form';
 import TopNavBar from '../../shared/NavBar/TopNavBar';
-import { competitionType } from '../../utils/data';
 import GroupsPicker from './GroupsPicker';
+import PostPageStore from '../stores/PostPageStore';
+import { competitionType } from '../../utils/data';
 import '../style/PostPage.less';
 
 class PostPage extends React.Component {
   submit = () => {
     this.props.form.validateFields((error, value) => {
-      console.log(error, value);
+      if (error) {
+        const errorMsg = error.title.errors[0].message;
+        Toast.fail(`${errorMsg}!`, 2);
+      } else {
+        const contactExit = value.phone || value.qq || value.wechat;
+        if (!contactExit) {
+          Toast.fail('请至少留下一种联系方式！');
+        } else {
+          PostPageStore.genPostData(value);
+        }
+      }
     });
   }
   
@@ -20,7 +34,9 @@ class PostPage extends React.Component {
         <TopNavBar title="需求发布" />
         <List className="postList" renderHeader={() => '详情描述'}>
           <InputItem
-            {...getFieldProps('title')}
+            {...getFieldProps('title', {
+              rules: [{ required: true }],
+            })}
             clear
             placeholder="有吸引力的标题更容易招募大佬哦"
             maxLength={20}
@@ -28,7 +44,7 @@ class PostPage extends React.Component {
             招募标题
           </InputItem>
           <InputItem
-            {...getFieldProps('competition')}
+            {...getFieldProps('cname')}
             clear
             placeholder="您要参加的比赛"
             maxLength={20}
@@ -36,27 +52,28 @@ class PostPage extends React.Component {
             比赛名称
           </InputItem>
           <InputItem
-            {...getFieldProps('href')}
+            {...getFieldProps('curl')}
             clear
-            placeholder="此处可以粘贴比赛详情链接"
+            placeholder="比赛详情链接"
             maxLength={100}
           >
             比赛链接
           </InputItem>
-          <Picker data={competitionType} cols={1} {...getFieldProps('competition-type')}>
+          <Picker data={competitionType} cols={1} {...getFieldProps('ctype')}>
             <List.Item>比赛类别</List.Item>
           </Picker>
           <DatePicker
             mode="date"
             title="比赛截止日期"
             extra="请选择"
-            {...getFieldProps('expiretime')}
+            {...getFieldProps('cddl')}
           >
             <List.Item>截止日期</List.Item>
           </DatePicker>
           <TextareaItem
-            {...getFieldProps('description', {
+            {...getFieldProps('demand', {
               initialValue: '需求描述',
+              rules: [{ required: true }],       
             })}
             rows={4}
             count={100}
