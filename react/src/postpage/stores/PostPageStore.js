@@ -4,14 +4,22 @@ import axios from 'axios';
 class PostPageStore {
   @observable postData = {};
 
+  @action genPostData(data) {
+    this.postData.title = data.title;
+    this.postData.compet = {
+      name: data.cname,
+      type: data.ctype,
+      url: data.curl,
+      ddl: data.cddl,
+    };
+    this.postData.intro = data.demand;
+    this.postData.demand = data.demand;
+    this.postData.members = this.members.map(member => member.id);
+    this.postData.contact = `${data.phone}&${data.qq}&${data.wechat}`;
+  }
 
   // Groups Store
-  @observable members = [{
-    url: 'https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg',
-    id: '2121',
-    name: '',
-    resume: '',
-  }];
+  @observable members = [];
 
   @action changeMembers(members) {
     this.members = members;
@@ -36,7 +44,7 @@ class PostPageStore {
 
   // Control Modal 
   @observable modal = false;
-  
+
   @action closeModal() {
     this.modal = false;
   }
