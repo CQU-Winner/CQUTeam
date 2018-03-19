@@ -1,6 +1,26 @@
 import React from 'react';
 import { SegmentedControl, Card, WingBlank, WhiteSpace, Tag, Button } from 'antd-mobile';
 
+const data = [    
+  {
+    req: {  
+      id: 'test',
+      avatar: 'test',
+      name: 'test',
+      status: 'test',
+      contact: 'test',
+    },
+  },
+  {
+    res: { 
+      id: 'test',
+      avatar: 'test',
+      name: 'test',
+      status: 'test',
+    },
+  },
+];
+
 class SayHello extends React.Component {
   onChange = (e) => {
     console.log(`selectedIndex:${e.nativeEvent.selectedSegmentIndex}`);
@@ -21,7 +41,7 @@ class SayHello extends React.Component {
   renderGreetingsCard = (greetings, req) => {
     if (req === true) {
       return (
-        greetings.map((greeting) => {
+        data.map((greeting) => {
           return (
             <WingBlank size="lg">
               <WhiteSpace size="lg" />
