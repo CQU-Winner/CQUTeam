@@ -19,6 +19,8 @@ class AccountsStore {
           .then((list) => {
             this.historyList = list.data.data;
           });
+      } else {
+        axios.get('http://www.cquwinner.com/api/wechat/login/');
       }
     });
   }

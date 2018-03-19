@@ -7,12 +7,6 @@ import TeamsList from '../../teams/components/TeamsList';
 import SayHello from './SayHello';
 
 class AccountsProfile extends React.Component {
-  tabs = [
-    { title: '个人资料', sub: '1' },
-    { title: '发布过的', sub: '2' },
-    { title: '招呼列表', sub: '3' },
-  ];
-
   renderTabBar = (props) => {
     return (
       <Sticky>
@@ -26,19 +20,41 @@ class AccountsProfile extends React.Component {
   }
 
   render() {
+    const tabs = [
+      { title: '个人资料', sub: '1' },
+      { title: '发布过的', sub: '2' },
+    ];
+    const userType = this.props.profile.user_type;
+    const SayHelloCouldBeRender = userType && userType !== 'banned';
+    let tabsComponent = null;
+    if (SayHelloCouldBeRender) {
+      tabs.push({ title: '招呼列表', sub: '3' });
+      tabsComponent = (
+        <Tabs 
+          tabs={tabs}
+          initalPage="1"
+          renderTabBar={this.renderTabBar}
+        >
+          <UserInformation user={this.props.profile} />
+          <TeamsList teams={this.props.list} />
+          <SayHello greetings={this.props.profile.greetings} />
+        </Tabs>);
+    } else {
+      tabsComponent = (
+        <Tabs 
+          tabs={tabs}
+          initalPage="1"
+          renderTabBar={this.renderTabBar}
+        >
+          <UserInformation user={this.props.profile} />
+          <TeamsList teams={this.props.list} />
+        </Tabs>);
+    }
     return (
       <div>
         <NavBar title="用户信息" showAddIcon />
         <StickyContainer>
-          <Tabs 
-            tabs={this.tabs}
-            initalPage="1"
-            renderTabBar={this.renderTabBar}
-          >
-            <UserInformation user={this.props.profile} />
-            <TeamsList teams={this.props.list} />
-            <SayHello greetings={this.props.profile.greetings} />
-          </Tabs>
+          {tabsComponent}
         </StickyContainer>
       </div>
     );
