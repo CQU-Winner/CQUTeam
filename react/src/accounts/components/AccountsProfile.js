@@ -4,7 +4,7 @@ import { StickyContainer, Sticky } from 'react-sticky';
 import NavBar from '../../shared/NavBar/TopNavBar';
 import UserInformation from './UserInformation';
 import TeamsList from '../../teams/components/TeamsList';
-import SayHello from './SayHello';
+import SayHello from '../containers/SayHello';
 
 class AccountsProfile extends React.Component {
   renderTabBar = (props) => {
@@ -24,10 +24,10 @@ class AccountsProfile extends React.Component {
       { title: '个人资料', sub: '1' },
       { title: '发布过的', sub: '2' },
     ];
-    const userType = this.props.profile.user_type;
-    const SayHelloCouldBeRender = userType && userType !== 'banned';
+    // const userType = this.props.profile.user_type;
+    // const SayHelloCouldBeRender = userType && userType !== 'banned';
     let tabsComponent = null;
-    if (SayHelloCouldBeRender) {
+    if (true) {
       tabs.push({ title: '招呼列表', sub: '3' });
       tabsComponent = (
         <Tabs 
@@ -37,7 +37,7 @@ class AccountsProfile extends React.Component {
         >
           <UserInformation user={this.props.profile} />
           <TeamsList teams={this.props.list} />
-          <SayHello greetings={this.props.profile.greetings} />
+          <SayHello />
         </Tabs>);
     } else {
       tabsComponent = (
