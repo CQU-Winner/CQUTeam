@@ -1,10 +1,13 @@
 import React from 'react';
-import InformationContainer from './containers/InformationContainer';
+import { NavBar } from 'antd-mobile';
+import '../shared/NavBar/TopNavBar.less';
 
 class Information extends React.Component {
   render() {
     return (
-      <InformationContainer />
+      <div>
+        <NavBar className="nav-bar-title" mode="light">CQUTeam</NavBar>
+      </div>
     );
   }
 }

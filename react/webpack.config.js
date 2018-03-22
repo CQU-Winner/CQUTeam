@@ -18,8 +18,8 @@ const config = {
             'mobx',
             'react-router',
             'react-router-dom',
-            'lodash',
-            'axios',
+            // 'lodash',
+            // 'axios',
           ],
     },
 
