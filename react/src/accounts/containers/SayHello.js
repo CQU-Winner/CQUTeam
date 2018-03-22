@@ -1,7 +1,8 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import { SegmentedControl, Card, WingBlank, WhiteSpace, Tag } from 'antd-mobile';
+import { SegmentedControl, WingBlank, WhiteSpace, Tag } from 'antd-mobile';
 import AccountsStore from '../stores/AccountsStore';
+import GreetingCard from '../components/GreetingCard';
 
 @observer
 class SayHello extends React.Component {
@@ -23,25 +24,26 @@ class SayHello extends React.Component {
       return (
         AccountsStore.reqGreetings.map((greeting) => {
           return (
-            <WingBlank size="lg">
+            <WingBlank key={greeting.req.id} size="lg">
               <WhiteSpace size="lg" />
-              <Card>
-                <Card.Header
-                  title={greeting.req.name}
-                  thumb={greeting.req.avatar}
-                  extra={this.renderTag(greeting.req.status)}
-                />
-                <Card.Body>
-                  <div>联系方式:</div>
-                </Card.Body>
-              </Card>
-              <WhiteSpace size="lg" />
+              <GreetingCard type="发送" greeting={greeting.req} />
+              <WhiteSpace size="sm" />
             </WingBlank>
           );
         })
       );
     } else {
-      return null;
+      return (
+        AccountsStore.resGreetings.map((greeting) => {
+          return (
+            <WingBlank key={greeting.res.id} size="lg">
+              <WhiteSpace size="lg" />
+              <GreetingCard type="接收" greeting={greeting.res} />
+              <WhiteSpace size="sm" />
+            </WingBlank>
+          );
+        })
+      );
     }
   }
 

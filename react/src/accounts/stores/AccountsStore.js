@@ -38,10 +38,10 @@ class AccountsStore {
   @observable greetings = [
     {
       req: {  
-        id: 'test',
+        id: '2VNN85X5M3HE3PYPP824FDXXR6',
         avatar: 'http://img02.fs.yiban.cn/8467105/avatar/user/200',
         name: '姚欲欣',
-        status: '待通过',
+        status: 'pending',
         contact: '手机:123&微信:12312&qq:123',
       },
     },
@@ -51,6 +51,15 @@ class AccountsStore {
         avatar: 'http://img02.fs.yiban.cn/8467105/avatar/user/200',
         name: '甘宇廷',
         status: '待通过',
+      },
+    },
+    {
+      req: {  
+        id: '2VNN85X5M3HE3PYPP824FD2XXR6',
+        avatar: 'http://img02.fs.yiban.cn/8467105/avatar/user/200',
+        name: '姚欲欣',
+        status: 'pending',
+        contact: '手机:123&微信:12312&qq:123',
       },
     },
   ];

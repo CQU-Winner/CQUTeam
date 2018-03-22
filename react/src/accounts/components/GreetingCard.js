@@ -1,21 +1,55 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import '../style/GreetingCard.less';
 
-function GreetingCard(greetings) {
-  return (
-    <div className="greeting-card">
-      <div className="card-header">
-        <div className="avatar">
-          <img src={greetings.avatar} alt="avatar" />
+class GreetingCard extends React.Component {
+  renderTag = (status) => {
+    if (status === 'pending') {
+      return (
+        <div className="tag pending">
+          待通过
         </div>
-        <div calssName="name">
-          {greetings.name}
+      );
+    } else if (status === 'rejected') {
+      return (
+        <div className="tag rejected">
+          已回绝
         </div>
-        <div calssName="tag">
-          {greetings.name}
-        </div>
+      );
+    }
+    return (
+      <div className="tag resolve">
+        已同意
       </div>
-    </div>
-  );
+    );
+  }
+
+  render() {
+    const { greeting } = this.props;
+    return (
+      <div className="greeting-card">
+        <div className="card-header">
+          <Link to={`/accounts/${greeting.id}`}>
+            <div className="user">
+              <div className="avatar">
+                <img src={greeting.avatar} alt="avatar" />
+              </div>
+              <div className="name">
+                {greeting.name}
+              </div>
+            </div>
+          </Link>
+          {this.renderTag(greeting.status)}
+        </div>
+        {
+          greeting.contact &&
+          <div className="card-content">
+            {greeting.contact}
+          </div>
+        }
+      </div>
+    );
+  }
 }
 
 export default GreetingCard;
