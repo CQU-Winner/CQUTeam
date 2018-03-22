@@ -32,7 +32,7 @@ class AccountsStore {
   }
 
   // Greetings
-  @observable greetingsType = '发送';
+  @observable greetingsType = '已发送';
   @observable reqGreetings = [];
   @observable resGreetings = [];
   @observable greetings = [
@@ -50,7 +50,7 @@ class AccountsStore {
         id: 'test',
         avatar: 'http://img02.fs.yiban.cn/8467105/avatar/user/200',
         name: '甘宇廷',
-        status: '待通过',
+        status: 'pending',
       },
     },
     {
@@ -64,10 +64,10 @@ class AccountsStore {
     },
   ];
   @action changeGreetingsType(type) {
-    if (type === '发送') {
-      this.greetingsType = '发送';
+    if (type === '已发送') {
+      this.greetingsType = '已发送';
     } else {
-      this.greetingsType = '接收';
+      this.greetingsType = '待处理';
     }
   }
 }

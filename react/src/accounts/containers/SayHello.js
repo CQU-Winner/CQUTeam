@@ -20,13 +20,13 @@ class SayHello extends React.Component {
   }
 
   renderGreetingsCards = (type) => {
-    if (type === '发送') {
+    if (type === '已发送') {
       return (
         AccountsStore.reqGreetings.map((greeting) => {
           return (
             <WingBlank key={greeting.req.id} size="lg">
               <WhiteSpace size="lg" />
-              <GreetingCard type="发送" greeting={greeting.req} />
+              <GreetingCard type="已发送" greeting={greeting.req} />
               <WhiteSpace size="sm" />
             </WingBlank>
           );
@@ -38,7 +38,7 @@ class SayHello extends React.Component {
           return (
             <WingBlank key={greeting.res.id} size="lg">
               <WhiteSpace size="lg" />
-              <GreetingCard type="接收" greeting={greeting.res} />
+              <GreetingCard type="待处理" greeting={greeting.res} />
               <WhiteSpace size="sm" />
             </WingBlank>
           );
@@ -48,12 +48,13 @@ class SayHello extends React.Component {
   }
 
   render() {
-    const isReq = AccountsStore.greetingsType === '发送';
+    const isReq = AccountsStore.greetingsType === '已发送';
+    const isRes = AccountsStore.greetingsType === '待处理';
     return (
       <div className="greetings">
         <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'center' }}>
           <SegmentedControl
-            values={['发送', '接受']}
+            values={['已发送', '待处理']}
             onValueChange={this.onValueChange}
             style={{ height: '20px', width: '200px' }}
           />
@@ -62,7 +63,11 @@ class SayHello extends React.Component {
           <WhiteSpace size="lg" />
           {
             isReq &&
-            this.renderGreetingsCards('发送')
+            this.renderGreetingsCards('已发送')
+          }
+          {
+            isRes &&
+            this.renderGreetingsCards('待处理')
           }
           <WhiteSpace size="lg" />
         </WingBlank>
