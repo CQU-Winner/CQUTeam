@@ -1,9 +1,19 @@
 import React from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { Button } from 'antd-mobile';
+import { Button, Toast } from 'antd-mobile';
 import '../style/GreetingCard.less';
 
 class GreetingCard extends React.Component {
+  handleGreeting = (id, operation) => () => {
+    const url = `http://www.cquwinner.com/api/greetings/${id}/${operation}`;
+    axios.put(url).then(() => {
+      Toast.success('操作成功!', 1);
+    }).catch(() => {
+      Toast.fail('操作失败，请重试！', 1);
+    });
+  }
+
   renderTag = (status) => {
     if (status === 'pending') {
       return (
@@ -17,7 +27,7 @@ class GreetingCard extends React.Component {
           已回绝
         </div>
       );
-    } else if (status === 'rejected') {
+    } else if (status === 'resolve') {
       return (
         <div className="tag resolve">
           已同意
@@ -53,8 +63,20 @@ class GreetingCard extends React.Component {
         {
           isResGreeting && 
           <div className="btn-list">
-            <Button type="ghost" inline size="small" >回绝</Button>
-            <Button type="ghost" inline size="small" >同意</Button>
+            <Button 
+              type="ghost" 
+              size="small" 
+              onClick={this.handleGreeting(greeting.id, 'denial')} 
+            >
+              回绝
+            </Button>
+            <Button 
+              type="ghost" 
+              size="small"
+              onClick={this.handleGreeting(greeting.id, 'approval')} 
+            >
+              同意
+            </Button>
           </div>
         }
       </div>
