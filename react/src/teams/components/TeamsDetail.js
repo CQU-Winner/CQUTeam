@@ -74,9 +74,16 @@ class TeamsDetail extends React.Component {
           <List className="teams-list">
             {this.renderFounder(founder, self)}
           </List>
-          <div className="say-hello">
-            <Button type="ghost" size="small">打招呼</Button>
-          </div>
+          {
+            self ? 
+              <div className="operating">
+                <div className="editing" />
+                <div className="delete" />
+              </div> : 
+              <div className="say-hello">
+                <Button type="ghost" size="small">打招呼</Button>
+              </div>
+          }
         </div>
       );
     }
