@@ -1,9 +1,9 @@
 import { observable, computed, reaction } from 'mobx';
 import * as queryString from 'querystring';
 import * as axios from 'axios';
-import { competTypes } from '../shared/consts';
+import { competTypes, apiRoute } from '../shared/consts';
 
-const competUrl = 'http://cquwinner.com/api/compets';
+const competUrl = `${apiRoute}compets`;
 
 export class InfomationStore {
     @observable wd = ''
