@@ -8,7 +8,7 @@ class BottomTabBar extends React.Component {
   @observable selectedTab = 'teams';
 
   linkTo = (path) => {
-    this.props.history.push(path);
+    this.props.history.replace(path);
   };
 
   render() {

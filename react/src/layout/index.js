@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Teams from '../teams';
 import Information from '../information';
+import InformationDetail from '../information/detail';
 import Accounts from '../accounts';
 import PostPage from '../postpage/containers/PostPage';
 import BottomTabBar from '../shared/TabBar/BottomTabBar';
@@ -15,7 +16,8 @@ class Layout extends React.Component {
           <Switch>
             <Route path="/teams" component={Teams} />
             <Route path="/accounts" component={Accounts} />
-            <Route path="/information" component={Information} />
+            <Route path="/information" exact component={Information} />
+            <Route path="/information/:id" component={InformationDetail} />
             <Route path="/postpage" component={PostPage} />
             <Redirect to="/teams" />
           </Switch>
