@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {
   List, InputItem, Picker, DatePicker, 
   TextareaItem, Button, Toast,
@@ -12,30 +11,6 @@ import { competitionType } from '../../utils/data';
 import '../style/PostPage.less';
 
 class PostPage extends React.Component {
-  static propTypes = {
-    postPageData: PropTypes.shape({
-      title: PropTypes.string,
-      cname: PropTypes.string,
-      curl: PropTypes.string,
-      demand: PropTypes.string,
-      phone: PropTypes.string,
-      wechat: PropTypes.string,
-      qq: PropTypes.string,
-    }),
-  }
-
-  static defaultProps = {
-    postPageData: {
-      title: '',
-      cname: '',
-      curl: '',
-      demand: '',
-      phone: '',
-      wechat: '',
-      qq: '',
-    },
-  }
-
   submit = () => {
     this.props.form.validateFields((error, value) => {
       if (error) {
@@ -54,7 +29,7 @@ class PostPage extends React.Component {
   
   render() {
     const { getFieldProps } = this.props.form;
-    const { postPageData } = this.props;
+    const { initData } = PostPageStore;
     return (
       <div style={{ marginBottom: '50px' }}>
         <TopNavBar title="需求发布" />
@@ -62,7 +37,7 @@ class PostPage extends React.Component {
           <InputItem
             {...getFieldProps('title', {
               rules: [{ required: true }],
-              initialValue: postPageData.title,
+              initialValue: initData.title,
             })}
             clear
             placeholder="有吸引力的标题更容易招募大佬哦"
@@ -73,7 +48,7 @@ class PostPage extends React.Component {
           <InputItem
             {...getFieldProps('cname', {
               rules: [{ required: true }],
-              initialValue: postPageData.cname,
+              initialValue: initData.cname,
             })}
             clear
             placeholder="您要参加的比赛"
@@ -83,7 +58,7 @@ class PostPage extends React.Component {
           </InputItem>
           <InputItem
             {...getFieldProps('curl', {
-              initialValue: postPageData.curle,
+              initialValue: initData.curle,
             })}
             clear
             placeholder="比赛详情链接"
@@ -125,7 +100,7 @@ class PostPage extends React.Component {
           </div>
           <InputItem
             {...getFieldProps('phone', {
-              initialValue: postPageData.phone,
+              initialValue: initData.phone,
             })}
             type="phone"
             clear
@@ -135,7 +110,7 @@ class PostPage extends React.Component {
           </InputItem>
           <InputItem
             {...getFieldProps('wechat', {
-              initialValue: postPageData.wechat,
+              initialValue: initData.wechat,
             })}
             clear
             placeholder="选填"
@@ -145,7 +120,7 @@ class PostPage extends React.Component {
           </InputItem>
           <InputItem
             {...getFieldProps('qq', {
-              initialValue: postPageData.qq,
+              initialValue: initData.qq,
             })}
             type="number"
             clear

@@ -2,6 +2,15 @@ import { observable, action } from 'mobx';
 import axios from 'axios';
 
 class PostPageStore {
+  @observable initData = {
+    title: '',
+    cname: '',
+    curl: '',
+    demand: '',
+    phone: '',
+    wechat: '',
+    qq: '',
+  };
   @observable postData = {};
 
   @action genPostData(data) {
