@@ -1,8 +1,15 @@
 @avatarSize:60px;
 
+.userinformation-icon {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 26px;
+  height: 26px;
+}
+
 .information-container {
   display: flex;
-  height: 250px;
   padding: 20px;
   background: #fff;
   flex-direction: column;
@@ -20,5 +27,16 @@
   .name {
     margin: 10px;
     font-weight: 500;
+  }
+  .edit {
+    .userinformation-icon;
+    background: url('../assets/edit.svg') center center / 26px 26px no-repeat;
+  }
+  .check {
+    .userinformation-icon;
+    background: url('../assets/check.svg') center center / 24px 24px no-repeat;
+  }
+  .am-textarea-control textarea {
+    font-size: 14px; 
   }
 }

@@ -3,14 +3,27 @@ import {
   List, InputItem, Picker, DatePicker, 
   TextareaItem, Button, Toast,
 } from 'antd-mobile';
+import { observer } from 'mobx-react';
+import { withRouter } from 'react-router-dom';
 import { createForm } from 'rc-form';
 import TopNavBar from '../../shared/NavBar/TopNavBar';
 import GroupsPicker from './GroupsPicker';
 import PostPageStore from '../stores/PostPageStore';
+import TeamsDetailStore from '../../teams/stores/TeamsDetailStore';
 import { competitionType } from '../../utils/data';
 import '../style/PostPage.less';
 
+@withRouter
+@observer
 class PostPage extends React.Component {
+  componentDidMount() {
+    const { teamId } = this.props.match.params;
+    if (teamId !== 'init') {
+      if (TeamsDetailStore.detail.data) {
+        PostPageStore.genInitData(TeamsDetailStore.detail.data);
+      }
+    }
+  }
   submit = () => {
     this.props.form.validateFields((error, value) => {
       if (error) {
@@ -29,6 +42,7 @@ class PostPage extends React.Component {
   
   render() {
     const { getFieldProps } = this.props.form;
+    const { initData } = PostPageStore;
     return (
       <div style={{ marginBottom: '50px' }}>
         <TopNavBar title="需求发布" />
@@ -36,6 +50,7 @@ class PostPage extends React.Component {
           <InputItem
             {...getFieldProps('title', {
               rules: [{ required: true }],
+              initialValue: initData.title,
             })}
             clear
             placeholder="有吸引力的标题更容易招募大佬哦"
@@ -44,7 +59,10 @@ class PostPage extends React.Component {
             招募标题
           </InputItem>
           <InputItem
-            {...getFieldProps('cname')}
+            {...getFieldProps('cname', {
+              rules: [{ required: true }],
+              initialValue: initData.cname,
+            })}
             clear
             placeholder="您要参加的比赛"
             maxLength={20}
@@ -52,14 +70,20 @@ class PostPage extends React.Component {
             比赛名称
           </InputItem>
           <InputItem
-            {...getFieldProps('curl')}
+            {...getFieldProps('curl', {
+              initialValue: initData.curl,
+            })}
             clear
             placeholder="比赛详情链接"
             maxLength={100}
           >
             比赛链接
           </InputItem>
-          <Picker data={competitionType} cols={1} {...getFieldProps('ctype')}>
+          <Picker 
+            data={competitionType} 
+            cols={1} 
+            {...getFieldProps('ctype')}
+          >
             <List.Item>比赛类别</List.Item>
           </Picker>
           <DatePicker
@@ -72,7 +96,7 @@ class PostPage extends React.Component {
           </DatePicker>
           <TextareaItem
             {...getFieldProps('demand', {
-              initialValue: '需求描述',
+              initialValue: initData.demand,
               rules: [{ required: true }],       
             })}
             rows={4}
@@ -92,7 +116,9 @@ class PostPage extends React.Component {
             联系方式
           </div>
           <InputItem
-            {...getFieldProps('phone')}
+            {...getFieldProps('phone', {
+              initialValue: initData.phone,
+            })}
             type="phone"
             clear
             placeholder="选填"
@@ -100,7 +126,9 @@ class PostPage extends React.Component {
            手机号
           </InputItem>
           <InputItem
-            {...getFieldProps('wechat')}
+            {...getFieldProps('wechat', {
+              initialValue: initData.wechat,
+            })}
             clear
             placeholder="选填"
             maxLength={15}
@@ -108,7 +136,9 @@ class PostPage extends React.Component {
            微信号
           </InputItem>
           <InputItem
-            {...getFieldProps('qq')}
+            {...getFieldProps('qq', {
+              initialValue: initData.qq,
+            })}
             type="number"
             clear
             placeholder="选填"

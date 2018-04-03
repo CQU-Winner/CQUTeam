@@ -2,7 +2,6 @@ import React from 'react';
 import { observer } from 'mobx-react';
 import AccountsStore from '../stores/AccountsStore';
 import AccountsProfile from '../components/AccountsProfile';
-import Authentication from '../../shared/Authentication/Authentication';
 
 @observer
 class AccountsContainer extends React.Component {
@@ -23,7 +22,7 @@ class AccountsContainer extends React.Component {
           <AccountsProfile 
             profile={AccountsStore.userProfile} 
             list={AccountsStore.historyList} 
-          /> : <Authentication />}
+          /> : null}
       </div>
     );
   }

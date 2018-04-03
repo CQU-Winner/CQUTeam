@@ -1,9 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { List, Button } from 'antd-mobile';
 import '../style/TeamsDetail.less';
 
+@withRouter
 class TeamsDetail extends React.Component {
+  editDetail = () => {
+    const { teamId } = this.props.match.params;
+    this.props.history.push(`/postpage/${teamId}`);
+  }
+
   renderCardTitle = (title) => {
     return (
       <div className="card-title-lv2">
@@ -46,8 +52,9 @@ class TeamsDetail extends React.Component {
   render() {
     if (this.props.detail) {
       const {
-        compet, title, demand, members, founder, self,
+        compet, title, demand, members, founder,
       } = this.props.detail;
+      const self = true;
       return (
         <div className="card">
           <div className="card-title-lv1">
@@ -74,9 +81,20 @@ class TeamsDetail extends React.Component {
           <List className="teams-list">
             {this.renderFounder(founder, self)}
           </List>
-          <div className="say-hello">
-            <Button type="ghost" size="small">打招呼</Button>
-          </div>
+          {
+            self ? 
+              <div className="operating">
+                <div 
+                  className="editing" 
+                  onClick={this.editDetail} 
+                  onKeyUp={() => {}}
+                />
+                <div className="delete" />
+              </div> : 
+              <div className="say-hello">
+                <Button type="ghost" size="small">打招呼</Button>
+              </div>
+          }
         </div>
       );
     }

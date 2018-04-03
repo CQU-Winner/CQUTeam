@@ -21,7 +21,7 @@ class TopNavBar extends React.Component {
           mode="light"
           icon={null}
           rightContent={this.props.showAddIcon ? 
-            <Link to="/postpage"><div className="add-icon" /></Link> 
+            <Link to="/postpage/init"><div className="add-icon" /></Link> 
             : null}
         >
           <div className="nav-bar-title">
