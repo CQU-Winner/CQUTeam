@@ -3,14 +3,27 @@ import {
   List, InputItem, Picker, DatePicker, 
   TextareaItem, Button, Toast,
 } from 'antd-mobile';
+import { observer } from 'mobx-react';
+import { withRouter } from 'react-router-dom';
 import { createForm } from 'rc-form';
 import TopNavBar from '../../shared/NavBar/TopNavBar';
 import GroupsPicker from './GroupsPicker';
 import PostPageStore from '../stores/PostPageStore';
+import TeamsDetailStore from '../../teams/stores/TeamsDetailStore';
 import { competitionType } from '../../utils/data';
 import '../style/PostPage.less';
 
+@withRouter
+@observer
 class PostPage extends React.Component {
+  componentDidMount() {
+    const { teamId } = this.props.match.params;
+    if (teamId !== 'init') {
+      if (TeamsDetailStore.detail.data) {
+        PostPageStore.genInitData(TeamsDetailStore.detail.data);
+      }
+    }
+  }
   submit = () => {
     this.props.form.validateFields((error, value) => {
       if (error) {
@@ -58,7 +71,7 @@ class PostPage extends React.Component {
           </InputItem>
           <InputItem
             {...getFieldProps('curl', {
-              initialValue: initData.curle,
+              initialValue: initData.curl,
             })}
             clear
             placeholder="比赛详情链接"
@@ -66,7 +79,11 @@ class PostPage extends React.Component {
           >
             比赛链接
           </InputItem>
-          <Picker data={competitionType} cols={1} {...getFieldProps('ctype')}>
+          <Picker 
+            data={competitionType} 
+            cols={1} 
+            {...getFieldProps('ctype')}
+          >
             <List.Item>比赛类别</List.Item>
           </Picker>
           <DatePicker
@@ -79,7 +96,7 @@ class PostPage extends React.Component {
           </DatePicker>
           <TextareaItem
             {...getFieldProps('demand', {
-              initialValue: '需求描述',
+              initialValue: initData.demand,
               rules: [{ required: true }],       
             })}
             rows={4}

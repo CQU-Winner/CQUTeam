@@ -16,7 +16,7 @@ class Layout extends React.Component {
             <Route path="/teams" component={Teams} />
             <Route path="/accounts" component={Accounts} />
             <Route path="/information" component={Information} />
-            <Route path="/postpage" component={PostPage} />
+            <Route path="/postpage/:teamId" component={PostPage} />
             <Redirect to="/teams" />
           </Switch>
         </div>

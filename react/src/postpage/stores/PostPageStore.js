@@ -6,12 +6,22 @@ class PostPageStore {
     title: '',
     cname: '',
     curl: '',
-    demand: '',
+    demand: '需求描述',
     phone: '',
     wechat: '',
     qq: '',
   };
   @observable postData = {};
+
+  @action genInitData(data) {
+    const { compet, demand, title } = data;
+    this.initData.title = title;
+    this.initData.cname = compet.title;
+    this.initData.curl = compet.url;
+    this.initData.ctype = compet.type;
+    this.initData.cddl = compet.ddl;
+    this.initData.demand = demand;
+  }
 
   @action genPostData(data) {
     this.postData.title = data.title;
