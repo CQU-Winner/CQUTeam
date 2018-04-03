@@ -45,7 +45,8 @@ export default class Information extends React.Component {
                 <SearchBar
                     placeholder="搜索竞赛"
                     defaultValue={store.wd}
-                    onChange={v => store.wd = v}
+                    onSubmit={v => store.wd = v}
+                    onClear={() => store.wd = ''}
                 />
                 <Flex className="info-filter">
                     <RadioBar
