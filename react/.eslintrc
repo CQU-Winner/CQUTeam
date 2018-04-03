@@ -9,7 +9,7 @@
       "generator-star-spacing": [0],
       "consistent-return": [0],
       "react/forbid-prop-types": [0],
-      "react/jsx-filename-extension": [1, { "extensions": [".js"] }],
+      "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
       "global-require": [1],
       "import/prefer-default-export": [0],
       "react/jsx-no-bind": [0],
@@ -37,7 +37,21 @@
       "jsx-a11y/anchor-is-valid": [ "error", {
         "components": [ "Link" ],
         "specialLink": [ "to" ]
-      }]
+      }],
+      "indent": "off",
+      "max-len": "off",
+      "prefer-destructuring": "off",
+      "object-curly-newline": "off",
+      "no-alert": "off",
+      "no-console": "off",
+      "no-plusplus": "off",
+      "no-return-assign": "off",
+      "react/jsx-indent": "off",
+      "react/jsx-closing-bracket-location": "off",
+      "react/self-closing-comp": "off",
+      "react/jsx-indent-props": "off",
+      "react/no-unused-state": "warn",
+      "no-unused-vars": "warn"
     },
     "parserOptions": {
       "ecmaFeatures": {
