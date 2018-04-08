@@ -16,8 +16,9 @@ class TeamsStore {
     return this.teamsList.data && this.teamsList.data.length > 10;
   }
 
-  @action changePage(value) {
-    console.log(value);
+  @action changePage(page) {
+    this.page = page;
+    this.fetchTeamsList();
   }
 
   @action changeTeamType(teamtype) {

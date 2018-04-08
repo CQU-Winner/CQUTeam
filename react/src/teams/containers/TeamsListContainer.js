@@ -33,7 +33,7 @@ class TeamsListContainer extends React.Component {
         <TeamsList teams={this.getTeams()} />
         <Pagination
           current={TeamsStore.page}
-          hasNext={TeamsStore.hasMore}
+          hasNext={TeamsStore.hasMore && !TeamsStore.error}
           onChange={(v) => { TeamsStore.changePage(v); }}
         />
       </div>
