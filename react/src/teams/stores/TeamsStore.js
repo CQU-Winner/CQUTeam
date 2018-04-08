@@ -1,5 +1,6 @@
 import { observable, action } from 'mobx';
 import axios from 'axios';
+import { Promise } from 'core-js';
 
 class TeamsStore {
   url = 'http://www.cquwinner.com/api/groups';
