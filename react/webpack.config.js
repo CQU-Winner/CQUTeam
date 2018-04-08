@@ -28,7 +28,6 @@ const config = {
         filename: DEV ? '[name].js' : '[name].[chunkhash].js',
     },
 
-    devtool: 'eval-source-map',
     devServer: {
         contentBase: './static',
         inline: true
@@ -107,10 +106,27 @@ const config = {
     ],
 }
 
+if (DEV) {
+    const Visualizer = require('webpack-visualizer-plugin');
+    config.devtool = 'eval-source-map';
+    config.plugins.push(
+        new Visualizer(),
+    );
+}
+
 if (!DEV) {
+    const CompressionWebpackPlugin = require('compression-webpack-plugin');
     config.plugins.push(
         new CleanWebpackPlugin(['static']),
-        new UglifyJSPlugin()
+        new UglifyJSPlugin({
+            uglifyOptions: {
+                output: {
+                    comments: false,
+                    beautify: false,
+                }
+            }
+        }),
+        new CompressionWebpackPlugin(), // gzip压缩
     );
 }
 
