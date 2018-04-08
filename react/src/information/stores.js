@@ -54,8 +54,7 @@ export class InfomationStore {
         this.setQueryString = setQueryString;
 
         const { wd, sort, page, category, rough } = queryString.parse(window.location.search.split('?')[1]);
-        console.log(window.location.search, { wd, sort, category, rough, page });
-
+        
         this.wd = wd || this.wd;
         this.sort = sort || this.sort;
         this.page = page || this.page;
