@@ -37,6 +37,20 @@ class PostPageStore {
     this.postData.contact = `${data.phone}&${data.qq}&${data.wechat}`;
   }
 
+  @action submitData() {
+    const url = 'http://www.cquwinner.com/api/groups';
+    axios.post(url, {
+      params: this.postData,
+    });
+  }
+
+  @action updateData(teamId) {
+    const url = `http://www.cquwinner.com/api/groups/${teamId}`;
+    axios.put(url, {
+      params: this.postData,
+    });
+  }
+
   // Groups Store
   @observable members = [];
 

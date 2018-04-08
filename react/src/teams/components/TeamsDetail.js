@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { List, Button } from 'antd-mobile';
+import { List, Button, Modal } from 'antd-mobile';
 import '../style/TeamsDetail.less';
 
 @withRouter
@@ -8,6 +8,14 @@ class TeamsDetail extends React.Component {
   editDetail = () => {
     const { teamId } = this.props.match.params;
     this.props.history.push(`/postpage/${teamId}`);
+  }
+
+  deleteAlert = () => {
+    const { alert } = Modal;
+    const alertInstance = alert('关闭招募', '确定要关闭此招募吗？?', [
+      { text: '取消', onPress: () => {}, style: 'default' },
+      { text: '确认', onPress: () => console.log('ok') },
+    ]);
   }
 
   renderCardTitle = (title) => {
@@ -89,7 +97,11 @@ class TeamsDetail extends React.Component {
                   onClick={this.editDetail} 
                   onKeyUp={() => {}}
                 />
-                <div className="delete" />
+                <div 
+                  className="delete" 
+                  onClick={this.deleteAlert}
+                  onKeyUp={() => {}}
+                />
               </div> : 
               <div className="say-hello">
                 <Button type="ghost" size="small">打招呼</Button>

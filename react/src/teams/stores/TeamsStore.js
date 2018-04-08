@@ -1,5 +1,6 @@
-import { observable, action } from 'mobx';
+import { observable, action, computed } from 'mobx';
 import axios from 'axios';
+import { Promise } from 'core-js';
 
 class TeamsStore {
   url = 'http://www.cquwinner.com/api/groups';
@@ -7,9 +8,18 @@ class TeamsStore {
   @observable error = false;
   @observable ordering = 'hot';
   @observable wd='';
-  @observable page = 0;
+  @observable page = 1;
   @observable teamType = [''];
   @observable teamsList = [];
+
+  @computed get hasMore() {
+    return this.teamsList.data && this.teamsList.data.length > 10;
+  }
+
+  @action changePage(page) {
+    this.page = page;
+    this.fetchTeamsList();
+  }
 
   @action changeTeamType(teamtype) {
     this.teamType = teamtype;

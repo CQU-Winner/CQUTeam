@@ -57,7 +57,7 @@ export default class Pagination extends React.Component {
                         className={!this.lastPage ? 'highlighted' : ''}
                         onClick={() => !this.lastPage && this.changePage(Number(this.state.page) + 1)}
                     >
-                        {this.lastPage ? '没有啦' : '下一页'} {!this.lastPage && <Icon type="right" />}
+                        {this.lastPage ? '没有更多啦' : '下一页'} {!this.lastPage && <Icon type="right" />}
                     </button>
                 </Flex.Item>
             </Flex>

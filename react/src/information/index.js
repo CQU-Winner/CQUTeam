@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { observer } from 'mobx-react';
 import { InfomationStore } from './stores';
 import RadioBar from './components/RadioBar';
-import Pagination from './components/Pagination';
+import Pagination from '../shared/Pagination/Pagination.js';
 import { competTypes } from '../shared/consts';
 import '../shared/NavBar/TopNavBar.less';
 import './index.less';

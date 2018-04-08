@@ -5,6 +5,7 @@ import OrderingSwitchContainer from './OrderingSwitchContainer';
 import TeamsStore from '../stores/TeamsStore';
 import NavBar from '../../shared/NavBar/TopNavBar';
 import SearchBar from '../../shared/SearchBar/SearchBar';
+import Pagination from '../../shared/Pagination/Pagination';
 
 @observer
 class TeamsListContainer extends React.Component {
@@ -30,6 +31,11 @@ class TeamsListContainer extends React.Component {
         <SearchBar store="teamsStore" />
         <OrderingSwitchContainer />
         <TeamsList teams={this.getTeams()} />
+        <Pagination
+          current={TeamsStore.page}
+          hasNext={TeamsStore.hasMore && !TeamsStore.error}
+          onChange={(v) => { TeamsStore.changePage(v); }}
+        />
       </div>
     );
   }
