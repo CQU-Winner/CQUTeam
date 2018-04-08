@@ -35,7 +35,16 @@ class PostPage extends React.Component {
           Toast.fail('请至少留下一种联系方式！');
         } else {
           PostPageStore.genPostData(value);
-        }
+          // Initial commit or update according to the router params.
+          if (this.props.match.params) {
+            const { teamId } = this.props.match.params;
+            if (teamId !== 'init') {
+              PostPageStore.updateData(teamId);
+            } else {
+              PostPageStore.submitData();
+            }
+          }
+         }
       }
     });
   }
