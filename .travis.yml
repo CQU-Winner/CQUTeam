@@ -6,5 +6,6 @@ before_install:
     -in id_rsa.enc -out ~/.ssh/id_rsa -d
   - chmod 600 ~/.ssh/id_rsa
   - echo -e "Host 39.108.2.49 StrictHostKeyChecking no" >> ~/.ssh/config
+script: true
 after_success:
   - ssh root@39.108.2.49 'cd /home/CQUTeam-test/CQUTeam/react && git pull && npm run build:pro'
