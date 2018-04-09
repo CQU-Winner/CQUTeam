@@ -12,7 +12,7 @@ class TeamsDetail extends React.Component {
 
   deleteAlert = () => {
     const { alert } = Modal;
-    const alertInstance = alert('关闭招募', '确定要关闭此招募吗？?', [
+    const alertInstance = alert('关闭招募', '确定要关闭此招募吗？', [
       { text: '取消', onPress: () => {}, style: 'default' },
       { text: '确认', onPress: () => console.log('ok') },
     ]);
@@ -60,9 +60,8 @@ class TeamsDetail extends React.Component {
   render() {
     if (this.props.detail) {
       const {
-        compet, title, demand, members, founder,
+        compet, title, demand, members, founder, self,
       } = this.props.detail;
-      const self = true;
       return (
         <div className="card">
           <div className="card-title-lv1">
