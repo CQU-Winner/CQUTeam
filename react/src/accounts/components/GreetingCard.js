@@ -2,11 +2,12 @@ import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Button, Toast } from 'antd-mobile';
+import { apiRoute } from '../../shared/consts';
 import '../style/GreetingCard.less';
 
 class GreetingCard extends React.Component {
   handleGreeting = (id, operation) => () => {
-    const url = `http://www.cquwinner.com/api/greetings/${id}/${operation}`;
+    const url = `${apiRoute}greetings/${id}/${operation}`;
     axios.put(url).then(() => {
       Toast.success('操作成功!', 1);
     }).catch(() => {
