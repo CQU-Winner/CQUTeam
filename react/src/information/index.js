@@ -17,7 +17,7 @@ let store;
 export default class Information extends React.Component {
     constructor() {
         super();
-        store = store || new InfomationStore(this.setQueryString);
+        store = store || new InfomationStore(this.setQueryString, this.scrollToTop);
     }
 
     componentDidMount() {
@@ -32,7 +32,7 @@ export default class Information extends React.Component {
         this.props.history.replace(url.pathname + url.search + url.hash);
     }
     
-    componentWillReact() {
+    scrollToTop() {
         window.scrollTo(0, 0);
     }
 

@@ -18,7 +18,12 @@ export class InfomationStore {
         return this.compets && this.compets.length === 10;
     }
 
+    isRefreshing = false;
+
     refresh = async () => {
+        if (this.isRefreshing) return;
+        this.isRefreshing = true;
+
         const queryObj = {
             wd: this.wd,
             sort: this.sort,
@@ -48,10 +53,14 @@ export class InfomationStore {
             console.error(status, rawData && rawData.msg);
             this.loadFailed = true;
         }
+
+        this.scrollToTop();
+        this.isRefreshing = false;
     }
 
-    constructor(setQueryString) {
+    constructor(setQueryString, scrollToTop) {
         this.setQueryString = setQueryString;
+        this.scrollToTop = scrollToTop;
 
         const { wd, sort, page, category, rough } = queryString.parse(window.location.search.split('?')[1]);
         
