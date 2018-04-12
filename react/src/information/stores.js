@@ -14,11 +14,11 @@ export class InfomationStore {
     @observable compets = []
     @observable loadFailed = false;
 
+    @observable isRefreshing = false;
+
     @computed get hasMore() {
         return this.compets && this.compets.length === 10;
     }
-
-    isRefreshing = false;
 
     refresh = async () => {
         if (this.isRefreshing) return;
@@ -54,13 +54,11 @@ export class InfomationStore {
             this.loadFailed = true;
         }
 
-        this.scrollToTop();
         this.isRefreshing = false;
     }
 
-    constructor(setQueryString, scrollToTop) {
+    constructor(setQueryString) {
         this.setQueryString = setQueryString;
-        this.scrollToTop = scrollToTop;
 
         const { wd, sort, page, category, rough } = queryString.parse(window.location.search.split('?')[1]);
         

@@ -17,7 +17,7 @@ let store;
 export default class Information extends React.Component {
     constructor() {
         super();
-        store = store || new InfomationStore(this.setQueryString, this.scrollToTop);
+        store = store || new InfomationStore(this.setQueryString);
     }
 
     componentDidMount() {
@@ -32,7 +32,7 @@ export default class Information extends React.Component {
         this.props.history.replace(url.pathname + url.search + url.hash);
     }
     
-    scrollToTop() {
+    componentWillReact() {
         window.scrollTo(0, 0);
     }
 
@@ -81,10 +81,10 @@ export default class Information extends React.Component {
                     </Picker>
                 </Flex>
                 <List className="info-list">
-                    {store.loadFailed ?
-                        <List.Item onClick={store.refresh()}>
+                    {store.loadFailed || store.isRefreshing ?
+                        <List.Item onClick={store.loadFailed && store.refresh()}>
                             <div style={{ textAlign: 'center', lineHeight: '100px' }}>
-                                {'出错了😣 请点击重试'}
+                                {store.loadFailed ? '出错了😣 请点击重试' : '加载中...'}
                             </div>
                         </List.Item>
                     : store.compets.map(item => (
