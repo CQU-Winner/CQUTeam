@@ -1,5 +1,6 @@
 import { observable, action } from 'mobx';
 import axios from 'axios';
+import { apiRoute } from '../../shared/consts';
 
 class PostPageStore {
   @observable initData = {
@@ -38,14 +39,14 @@ class PostPageStore {
   }
 
   @action submitData() {
-    const url = 'http://www.cquwinner.com/api/groups';
+    const url = `${apiRoute}groups`;
     axios.post(url, {
       params: this.postData,
     });
   }
 
   @action updateData(teamId) {
-    const url = `http://www.cquwinner.com/api/groups/${teamId}`;
+    const url = `${apiRoute}groups/${teamId}`;
     axios.put(url, {
       params: this.postData,
     });
@@ -65,7 +66,7 @@ class PostPageStore {
   @observable membersSearched = [];
 
   @action searchingMembers(name) {
-    const url = 'http://www.cquwinner.com/api/users';
+    const url = `${apiRoute}users`;
     axios.get(url, {
       params: {
         name,

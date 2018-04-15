@@ -14,11 +14,16 @@ export class InfomationStore {
     @observable compets = []
     @observable loadFailed = false;
 
+    @observable isRefreshing = false;
+
     @computed get hasMore() {
         return this.compets && this.compets.length === 10;
     }
 
     refresh = async () => {
+        if (this.isRefreshing) return;
+        this.isRefreshing = true;
+
         const queryObj = {
             wd: this.wd,
             sort: this.sort,
@@ -48,6 +53,8 @@ export class InfomationStore {
             console.error(status, rawData && rawData.msg);
             this.loadFailed = true;
         }
+
+        this.isRefreshing = false;
     }
 
     constructor(setQueryString) {

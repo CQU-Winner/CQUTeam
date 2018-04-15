@@ -1,9 +1,10 @@
 import { observable, action, computed } from 'mobx';
 import axios from 'axios';
 import { Promise } from 'core-js';
+import { apiRoute } from '../../shared/consts';
 
 class TeamsStore {
-  url = 'http://www.cquwinner.com/api/groups';
+  url = `${apiRoute}groups`;
   @observable loading = false;
   @observable error = false;
   @observable ordering = 'hot';

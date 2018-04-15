@@ -1,5 +1,6 @@
 import { observable, action } from 'mobx';
 import axios from 'axios';
+import { apiRoute } from '../../shared/consts';
 
 class TeamsDetailStore {
   @observable loading = false;
@@ -7,7 +8,7 @@ class TeamsDetailStore {
   @observable detail = {};
 
   @action fetchDetail(id) {
-    const url = `http://www.cquwinner.com/api/groups/${id}`;
+    const url = `${apiRoute}groups/${id}`;
     axios.get(url).then((res) => {
       this.detail = res.data;
     }).catch(() => {
