@@ -8,4 +8,4 @@ before_install:
   - echo -e "Host 39.108.2.49\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 script: true
 after_success:
-  - ssh root@39.108.2.49 'cd /home/CQUTeam-test/CQUTeam/react && git pull && npm run build:pro'
+  - ssh root@39.108.2.49 'cd /site-cquwinner/react/CQUTeam/react && git pull && npm run build:pro'
