@@ -24,7 +24,7 @@ const config = {
     },
 
     output: {
-        path: DEV ? __dirname + '/static' : '/site-cquwinner/public/static',
+        path: DEV ? __dirname + '/static' : '/static',
         filename: DEV ? '[name].js' : '[name].[chunkhash].js',
     },
 
