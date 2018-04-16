@@ -101,10 +101,7 @@ class TeamsDetail extends React.Component {
                   onClick={this.deleteAlert}
                   onKeyUp={() => {}}
                 />
-              </div> : 
-              <div className="say-hello">
-                <Button type="ghost" size="small">打招呼</Button>
-              </div>
+              </div> : null
           }
         </div>
       );

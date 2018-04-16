@@ -4,7 +4,6 @@ import { StickyContainer, Sticky } from 'react-sticky';
 import NavBar from '../../shared/NavBar/TopNavBar';
 import UserInformation from './UserInformation';
 import TeamsList from '../../teams/components/TeamsList';
-import SayHello from '../containers/SayHello';
 
 class AccountsProfile extends React.Component {
   renderTabBar = (props) => {
@@ -25,31 +24,16 @@ class AccountsProfile extends React.Component {
       { title: '发布过的', sub: '2' },
     ];
     // const userType = this.props.profile.user_type;
-    // const SayHelloCouldBeRender = userType && userType !== 'banned';
-    let tabsComponent = null;
-    if (true) {
-      tabs.push({ title: '招呼列表', sub: '3' });
-      tabsComponent = (
-        <Tabs 
-          tabs={tabs}
-          initalPage="1"
-          renderTabBar={this.renderTabBar}
-        >
-          <UserInformation user={this.props.profile} />
-          <TeamsList teams={this.props.list} />
-          <SayHello />
-        </Tabs>);
-    } else {
-      tabsComponent = (
-        <Tabs 
-          tabs={tabs}
-          initalPage="1"
-          renderTabBar={this.renderTabBar}
-        >
-          <UserInformation user={this.props.profile} />
-          <TeamsList teams={this.props.list} />
-        </Tabs>);
-    }
+    // const SayHelloCouldBeRender = userType && userType !== 'banned'; 
+    const tabsComponent = (
+      <Tabs 
+        tabs={tabs}
+        initalPage="1"
+        renderTabBar={this.renderTabBar}
+      >
+        <UserInformation user={this.props.profile} />
+        <TeamsList teams={this.props.list} />
+      </Tabs>);
     return (
       <div>
         <NavBar title="用户信息" showAddIcon />
