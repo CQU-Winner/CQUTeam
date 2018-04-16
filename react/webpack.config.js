@@ -24,7 +24,7 @@ const config = {
     },
 
     output: {
-        path: DEV ? __dirname + '/static' : '/static',
+        path: __dirname + '/static',
         filename: DEV ? '[name].js' : '[name].[chunkhash].js',
     },
 
