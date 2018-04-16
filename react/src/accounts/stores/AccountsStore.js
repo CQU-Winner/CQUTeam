@@ -27,10 +27,7 @@ class AccountsStore {
             this.historyList = list.data.data;
           });
       } else {
-        axios.get(`${apiRoute}wechat/login/`)
-        .catch((err) => {
-          console.log(err);
-        });
+        window.location.href = `${apiRoute}wechat/login/`;
       }
     });
   }
