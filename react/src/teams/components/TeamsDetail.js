@@ -60,8 +60,10 @@ class TeamsDetail extends React.Component {
   render() {
     if (this.props.detail) {
       const {
-        compet, title, demand, members, founder, self,
+        compet, title, demand, members, founder, self, contact,
       } = this.props.detail;
+      const contactArray = contact.split(',');
+      const [phone, qq, wechat] = contactArray;
       return (
         <div className="card">
           <div className="card-title-lv1">
@@ -85,9 +87,15 @@ class TeamsDetail extends React.Component {
             </div>
           </div>
           {this.renderCardTitle('发起人')}
-          <List className="teams-list">
+          <List className="teams-lißst">
             {this.renderFounder(founder, self)}
           </List>
+          {this.renderCardTitle('联系方式')}
+          <div className="card-content">
+            <p>手机号:{phone || ''}</p>
+            <p>qq:{qq || ''}</p>
+            <p>微信:{wechat || ''}</p>
+          </div>
           {
             self ? 
               <div className="operating">

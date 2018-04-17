@@ -1,8 +1,9 @@
 import React from 'react';
 import * as queryString from 'querystring';
-import { NavBar, SearchBar, List, Flex, Picker } from 'antd-mobile';
+import { SearchBar, List, Flex, Picker } from 'antd-mobile';
 import { Link } from 'react-router-dom';
 import { observer } from 'mobx-react';
+import NavBar from '../shared/NavBar/TopNavBar';
 import { InfomationStore } from './stores';
 import RadioBar from './components/RadioBar';
 import Pagination from '../shared/Pagination/Pagination.js';
@@ -39,9 +40,7 @@ export default class Information extends React.Component {
     render() {
         return (
             <div className="info-container">
-                <NavBar mode="light">
-                    <div className="nav-bar-title">CQUTeam</div>
-                </NavBar>
+                <NavBar title="竞赛资讯" showAddIcon />
                 <SearchBar
                     placeholder="搜索竞赛"
                     defaultValue={store.wd}

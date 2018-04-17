@@ -19,27 +19,36 @@ class UserInformation extends React.Component {
     this.setState({ showEditing: false });
   }
 
+  renderEditIcon = () => {
+    if (this.state.showEditing) {
+      return (
+        <div 
+          className="check" 
+          onClick={this.updateResume}
+          onKeyUp={() => {}}
+        />
+      );
+    } else {
+      return (
+        <div 
+          className="edit" 
+          onClick={this.editResume}
+          onKeyUp={() => {}}
+        />
+      );
+    }
+  }
+
   render() {
     const { user } = this.props;
     const { getFieldProps } = this.props.form;
     const { showEditing } = this.state;
+    const isSelfAndNotBeBanned = user.user_type && user.user_type !== 'banned';
+    
     return (
       <div className="information-container">
         {
-          !showEditing &&
-          <div 
-            className="edit" 
-            onClick={this.editResume}
-            onKeyUp={() => {}}
-          />
-        }
-        {
-          this.state.showEditing &&
-          <div 
-            className="check" 
-            onClick={this.updateResume}
-            onKeyUp={() => {}}
-          />
+          isSelfAndNotBeBanned ? this.renderEditIcon() : null
         }
         <div className="avatar">
           <img src={user.avatar} alt="头像" />
@@ -48,13 +57,7 @@ class UserInformation extends React.Component {
           {user.name} 
         </div>
         {
-          !this.state.showEditing &&
-          <div className="resume">
-            {user.resume}
-          </div>
-        }
-        {
-          showEditing &&
+          showEditing ?
           <List>
             <TextareaItem
               {...getFieldProps('count', {
@@ -63,7 +66,10 @@ class UserInformation extends React.Component {
               rows={5}
               count={100}
             />
-          </List>
+          </List> : ( 
+            <div className="resume">
+              {user.resume || '请用一句话描述自己'}
+            </div>)
         }
       </div>
     );

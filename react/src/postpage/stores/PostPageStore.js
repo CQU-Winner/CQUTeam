@@ -35,7 +35,7 @@ class PostPageStore {
     this.postData.intro = data.demand;
     this.postData.demand = data.demand;
     this.postData.members = this.members.map(member => member.id);
-    this.postData.contact = `${data.phone}&${data.qq}&${data.wechat}`;
+    this.postData.contact = `${data.phone},${data.qq},${data.wechat}`;
   }
 
   @action submitData() {
