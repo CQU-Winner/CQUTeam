@@ -15,6 +15,7 @@ class AccountsStore {
     axios.get(url).then((res) => {
       this.profileLoading = false;
       this.userProfile = res.data.data;
+      console.log(res.data.data);
       if (res.data.data) {
         axios.get(`${apiRoute}users/${this.userProfile.id}/groups`)
           .then((list) => {
