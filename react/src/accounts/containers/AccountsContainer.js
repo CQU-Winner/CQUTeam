@@ -21,7 +21,8 @@ class AccountsContainer extends React.Component {
         {AccountsStore.userProfile ? 
           <AccountsProfile 
             profile={AccountsStore.userProfile} 
-            list={AccountsStore.historyList} 
+            list={AccountsStore.historyList}
+            userType={AccountsStore.userType}
           /> : null}
       </div>
     );
