@@ -22,4 +22,4 @@ export const competTypes = [{
     children: [{ label: '全部', value: '' }, ...(item.children.split('|').map(v => ({ label: v, value: v })))],
 })))];
 
-export const apiRoute = 'http://www.cquwinner.com/api/';
+export const apiRoute = 'http://cquwinner.com/api/';
