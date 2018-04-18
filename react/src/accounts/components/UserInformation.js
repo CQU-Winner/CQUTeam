@@ -1,7 +1,7 @@
 import React from 'react';
 import { List, TextareaItem, InputItem, Icon } from 'antd-mobile';
 import { createForm } from 'rc-form';
-import { updateUserInf } from '../stores/AccountsStore';
+import AccountsStore from '../stores/AccountsStore';
 import '../style/UserInformation.less';
 
 class UserInformation extends React.Component {
@@ -15,7 +15,7 @@ class UserInformation extends React.Component {
 
   updateResume = () => {
     this.props.form.validateFields((error, value) => {
-      updateUserInf(value);
+      AccountsStore.updateUserInf(value);
     });
     this.setState({ showEditing: false });
   }
