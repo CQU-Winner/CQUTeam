@@ -14,7 +14,7 @@ class UserInformation extends React.Component {
 
   updateResume = () => {
     this.props.form.validateFields((error, value) => {
-      console.log(error, value);
+      console.log(value.resume);
     });
     this.setState({ showEditing: false });
   }
@@ -60,7 +60,7 @@ class UserInformation extends React.Component {
           showEditing ?
           <List>
             <TextareaItem
-              {...getFieldProps('count', {
+              {...getFieldProps('resume', {
                 initialValue: user.resume,
               })}
               rows={5}
@@ -68,7 +68,7 @@ class UserInformation extends React.Component {
             />
           </List> : ( 
             <div className="resume">
-              {user.resume || '请用一句话描述自己'}
+              {user.resume}
             </div>)
         }
       </div>
