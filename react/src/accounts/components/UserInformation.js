@@ -7,8 +7,6 @@ import '../style/UserInformation.less';
 class UserInformation extends React.Component {
   state = {
     showEditing: false,
-    name: this.props.user.name,
-    resume: this.props.user.resume,
   }
 
   editResume = () => {
@@ -17,14 +15,11 @@ class UserInformation extends React.Component {
 
   updateResume = () => {
     this.props.form.validateFields(async (error, value) => {
-      await AccountsStore.updateUserInf(value);
-      this.setState({
-        showEditing: false,
-        name: value.name,
-        resume: value.resume,
-      });
+      AccountsStore.updateUserInf(value);
     });
-    
+    this.setState({
+      showEditing: false,
+    });
   }
 
   cancelEdit = () => {
@@ -63,7 +58,7 @@ class UserInformation extends React.Component {
   render() {
     const { user } = this.props;
     const { getFieldProps } = this.props.form;
-    const { showEditing, name, resume } = this.state;
+    const { showEditing } = this.state;
     const isSelfAndNotBeBanned = user.user_type && user.user_type !== 'banned';
     
     return (
@@ -82,12 +77,12 @@ class UserInformation extends React.Component {
                 textAlign: 'center',
               }}
               {...getFieldProps('name', {
-                initialValue: name,
+                initialValue: user.name,
               })}
             />
             <TextareaItem
               {...getFieldProps('resume', {
-                initialValue: resume,
+                initialValue: user.resume,
               })}
               rows={5}
               count={100}
@@ -95,10 +90,10 @@ class UserInformation extends React.Component {
           </List> : (
             <React.Fragment>
               <div className="name">
-                {name} 
+                {user.name} 
               </div> 
               <div className="resume">
-                {resume}
+                {user.resume}
               </div>
             </React.Fragment>
           )

@@ -27,13 +27,16 @@ class AccountsStore {
     });
   }
 
-  updateUserInf(inf) {
+  @action updateUserInf(inf) {
     const { name, resume } = inf;
     const url = `${apiRoute}self`;
-    return axios.put(url, {
+    axios.put(url, {
       name,
       resume,
-    });
+    }).then(() => {
+      this.userProfile.name = name;
+      this.userProfile.resume = resume;
+    })
   }
   
   // @observable greetingsType = '已发送';
