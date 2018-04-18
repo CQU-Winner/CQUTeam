@@ -30,11 +30,9 @@ class AccountsStore {
   updateUserInf(inf) {
     const { name, resume } = inf;
     const url = `${apiRoute}self`;
-    axios.put(url, {
-      params: {
-        name,
-        resume,
-      },
+    return axios.put(url, {
+      name,
+      resume,
     });
   }
   
