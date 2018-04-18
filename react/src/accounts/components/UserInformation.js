@@ -28,12 +28,14 @@ class UserInformation extends React.Component {
     if (this.state.showEditing) {
       return (
         <React.Fragment>
-          <Icon 
+          <Icon
+            className="check"
             type="check"
             onClick={this.updateResume}
             onKeyUp={() => {}}
           />
           <Icon 
+            className="cross"
             type="cross"
             onClick={this.cancelEdit}
             onKeyUp={() => {}}
