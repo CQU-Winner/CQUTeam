@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, TextareaItem, InputItem } from 'antd-mobile';
+import { List, TextareaItem, InputItem, Icon } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import { updateUserInf } from '../stores/AccountsStore';
 import '../style/UserInformation.less';
@@ -20,14 +20,25 @@ class UserInformation extends React.Component {
     this.setState({ showEditing: false });
   }
 
+  cancelEdit = () => {
+    this.setState({ showEditing: false });
+  }
+
   renderEditIcon = () => {
     if (this.state.showEditing) {
       return (
-        <div 
-          className="check" 
-          onClick={this.updateResume}
-          onKeyUp={() => {}}
-        />
+        <React.Fragment>
+          <Icon 
+            type="check"
+            onClick={this.updateResume}
+            onKeyUp={() => {}}
+          />
+          <Icon 
+            type="cross"
+            onClick={this.cancelEdit}
+            onKeyUp={() => {}}
+          />
+        </React.Fragment>
       );
     } else {
       return (
@@ -58,6 +69,9 @@ class UserInformation extends React.Component {
           showEditing ?
           <List>
             <InputItem
+              style={{
+                textAlign: 'center',
+              }}
               {...getFieldProps('name', {
                 initialValue: user.name,
               })}
