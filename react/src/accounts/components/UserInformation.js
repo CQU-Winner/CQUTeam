@@ -1,11 +1,14 @@
 import React from 'react';
-import { List, TextareaItem } from 'antd-mobile';
+import { List, TextareaItem, InputItem } from 'antd-mobile';
 import { createForm } from 'rc-form';
+import updateUserInf from '../stores/AccountsStore';
 import '../style/UserInformation.less';
 
 class UserInformation extends React.Component {
   state = {
     showEditing: false,
+    name: this.props.user.name,
+    resume: this.props.user.resume,
   }
 
   editResume = () => {
@@ -13,10 +16,14 @@ class UserInformation extends React.Component {
   }
 
   updateResume = () => {
-    this.props.form.validateFields((error, value) => {
-      console.log(value.resume);
+    this.props.form.validateFields(async (error, value) => {
+      await updateUserInf(value);
+      this.setState({
+        name: value.name,
+        resume: value.resume,
+        showEditing: false, 
+      });
     });
-    this.setState({ showEditing: false });
   }
 
   renderEditIcon = () => {
@@ -42,7 +49,7 @@ class UserInformation extends React.Component {
   render() {
     const { user } = this.props;
     const { getFieldProps } = this.props.form;
-    const { showEditing } = this.state;
+    const { showEditing, name, resume } = this.state;
     const isSelfAndNotBeBanned = user.user_type && user.user_type !== 'banned';
     
     return (
@@ -53,23 +60,31 @@ class UserInformation extends React.Component {
         <div className="avatar">
           <img src={user.avatar} alt="头像" />
         </div>
-        <div className="name">
-          {user.name} 
-        </div>
         {
           showEditing ?
           <List>
+            <InputItem
+              {...getFieldProps('name', {
+                initialValue: name,
+              })}
+            />
             <TextareaItem
               {...getFieldProps('resume', {
-                initialValue: user.resume,
+                initialValue: resume,
               })}
               rows={5}
               count={100}
             />
-          </List> : ( 
-            <div className="resume">
-              {user.resume}
-            </div>)
+          </List> : (
+            <React.Fragment>
+              <div className="name">
+                {name} 
+              </div> 
+              <div className="resume">
+                {resume}
+              </div>
+            </React.Fragment>
+          )
         }
       </div>
     );

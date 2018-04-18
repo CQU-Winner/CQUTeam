@@ -26,6 +26,17 @@ class AccountsStore {
       }
     });
   }
+
+  @action updateUserInf(inf) {
+    const { name, resume } = inf;
+    const url = `${apiRoute}self`;
+    return axios.put(url, {
+      params: {
+        name,
+        resume,
+      },
+    });
+  }
   
   // @observable greetingsType = '已发送';
   // @observable reqGreetings = [];
