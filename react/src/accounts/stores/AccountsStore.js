@@ -27,7 +27,7 @@ class AccountsStore {
     });
   }
 
-  @action updateUserInf(inf) {
+  updateUserInf(inf) {
     const { name, resume } = inf;
     const url = `${apiRoute}self`;
     axios.put(url, {

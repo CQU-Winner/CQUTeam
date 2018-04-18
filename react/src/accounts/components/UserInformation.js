@@ -1,7 +1,7 @@
 import React from 'react';
 import { List, TextareaItem, InputItem } from 'antd-mobile';
 import { createForm } from 'rc-form';
-import updateUserInf from '../stores/AccountsStore';
+import { updateUserInf } from '../stores/AccountsStore';
 import '../style/UserInformation.less';
 
 class UserInformation extends React.Component {
