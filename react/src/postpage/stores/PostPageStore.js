@@ -40,15 +40,15 @@ class PostPageStore {
 
   @action submitData() {
     const url = `${apiRoute}groups`;
-    axios.post(url, {
-      params: this.postData,
+    return axios.post(url, {
+      ...this.postData,
     });
   }
 
   @action updateData(teamId) {
     const url = `${apiRoute}groups/${teamId}`;
-    axios.put(url, {
-      params: this.postData,
+    return axios.put(url, {
+      ...this.postData,
     });
   }
 

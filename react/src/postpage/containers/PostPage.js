@@ -39,9 +39,13 @@ class PostPage extends React.Component {
           if (this.props.match.params) {
             const { teamId } = this.props.match.params;
             if (teamId !== 'init') {
-              PostPageStore.updateData(teamId);
+              PostPageStore.updateData(teamId).then(() => {
+                Toast.success('更新成功！', 2);
+              });
             } else {
-              PostPageStore.submitData();
+              PostPageStore.submitData().then(() => {
+                Toast.success('发布成功！', 2);
+              });
             }
           }
          }
