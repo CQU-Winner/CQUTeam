@@ -36,7 +36,7 @@ class AccountsStore {
     }).then(() => {
       this.userProfile.name = name;
       this.userProfile.resume = resume;
-    })
+    });
   }
   
   // @observable greetingsType = '已发送';

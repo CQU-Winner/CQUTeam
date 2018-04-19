@@ -1,9 +1,11 @@
 import React from 'react';
+import { observer } from 'mobx-react';
 import { List, TextareaItem, InputItem, Icon } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import AccountsStore from '../stores/AccountsStore';
 import '../style/UserInformation.less';
 
+@observer
 class UserInformation extends React.Component {
   state = {
     showEditing: false,
