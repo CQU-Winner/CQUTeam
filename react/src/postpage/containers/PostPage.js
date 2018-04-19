@@ -27,8 +27,13 @@ class PostPage extends React.Component {
   submit = () => {
     this.props.form.validateFields((error, value) => {
       if (error) {
-        const errorMsg = error.title.errors[0].message;
-        Toast.fail(`${errorMsg}!`, 2);
+        console.log(error);
+        try {
+          const errorMsg = error.title.errors[0].message;
+          Toast.fail(`${errorMsg}!`, 2);
+        } catch (e) {
+          Toast.fail('操作失败', 2);
+        }
       } else {
         const contactExit = value.phone || value.qq || value.wechat;
         if (!contactExit) {
