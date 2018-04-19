@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { List, Button, Modal } from 'antd-mobile';
+import { List, Button, Modal, Toast } from 'antd-mobile';
+import TeamsDetailStore from '../stores/TeamsDetailStore';
 import '../style/TeamsDetail.less';
 
 @withRouter
@@ -12,9 +13,17 @@ class TeamsDetail extends React.Component {
 
   deleteAlert = () => {
     const { alert } = Modal;
+    const { teamId } = this.props.match.params;
     const alertInstance = alert('关闭招募', '确定要关闭此招募吗？', [
       { text: '取消', onPress: () => {}, style: 'default' },
-      { text: '确认', onPress: () => console.log('ok') },
+      { text: '确认',
+        onPress: () => { 
+          TeamsDetailStore.deletePost(teamId).then(() => {
+            Toast.success('删除成功！', 1, () => {
+              this.props.history.goBack();
+            });
+          });
+      } },
     ]);
   }
 

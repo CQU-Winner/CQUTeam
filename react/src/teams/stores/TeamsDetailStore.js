@@ -15,6 +15,11 @@ class TeamsDetailStore {
       this.error = true;
     });
   }
+
+  @action deletePost(teamId) {
+    const url = `${apiRoute}groups/${teamId}`;
+    return axios.delete(url);
+  }
 }
 
 export default new TeamsDetailStore();
