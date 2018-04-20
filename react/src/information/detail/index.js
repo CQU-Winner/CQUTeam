@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavBar, Icon } from 'antd-mobile';
 import axios from 'axios';
+import Loader from '../../shared/loader';
 import { apiRoute } from '../../shared/consts';
 import '../../shared/NavBar/TopNavBar.less';
 import './index.less';
@@ -51,11 +52,8 @@ export default class InfoDetails extends React.Component {
                         >
                         </section>
                     </article>
-                ) : (
-                    <p style={{ fontSize: '1.2em', textAlign: 'center' }}>
-                        加载中...
-                    </p>
-                )}
+                ) : <Loader />
+                }
             </div>
         );
     }

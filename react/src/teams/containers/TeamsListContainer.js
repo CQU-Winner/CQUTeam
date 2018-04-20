@@ -1,6 +1,7 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import { List } from 'antd-mobile';
+import Loader from '../../shared/loader';
 import TeamsList from '../components/TeamsList';
 import OrderingSwitchContainer from './OrderingSwitchContainer';
 import TeamsStore from '../stores/TeamsStore';
@@ -31,16 +32,21 @@ class TeamsListContainer extends React.Component {
         <NavBar title="组队信息" showAddIcon />
         <SearchBar store="teamsStore" />
         <OrderingSwitchContainer />
-        <TeamsList teams={this.getTeams()} />
-        <List>
-          <List.Item>
-            <Pagination
-            current={TeamsStore.page}
-            hasNext={TeamsStore.hasMore && !TeamsStore.error}
-            onChange={(v) => { TeamsStore.changePage(v); }}
-            />
-          </List.Item>
-        </List>
+        {
+          TeamsStore.loading ? <Loader /> :
+          <React.Fragment>
+            <TeamsList teams={this.getTeams()} />
+            <List>
+              <List.Item>
+                <Pagination
+                current={TeamsStore.page}
+                hasNext={TeamsStore.hasMore && !TeamsStore.error}
+                onChange={(v) => { TeamsStore.changePage(v); }}
+                />
+              </List.Item>
+            </List>
+          </React.Fragment>
+        }
       </div>
     );
   }
