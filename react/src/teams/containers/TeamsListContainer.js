@@ -27,7 +27,7 @@ class TeamsListContainer extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={{ marginBottom: '50px' }}>
         <NavBar title="组队信息" showAddIcon />
         <SearchBar store="teamsStore" />
         <OrderingSwitchContainer />

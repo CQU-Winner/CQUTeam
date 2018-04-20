@@ -14,7 +14,7 @@ class TeamsStore {
   @observable teamsList = [];
 
   @computed get hasMore() {
-    return this.teamsList.data && this.teamsList.data.length > 10;
+    return this.teamsList.data && this.teamsList.data.length === 10;
   }
 
   @action changePage(page) {
