@@ -27,17 +27,17 @@ class PostPage extends React.Component {
   submit = () => {
     this.props.form.validateFields((error, value) => {
       if (error) {
-        console.log(error);
-        try {
-          const errorMsg = error.title.errors[0].message;
-          Toast.fail(`${errorMsg}!`, 2);
-        } catch (e) {
-          Toast.fail('操作失败', 2);
+        if (error.title) {
+          Toast.fail('请填写招募标题!', 1);
+        } else if (error.cname) {
+          Toast.fail('请填写比赛名称!', 1);
+        } else {
+          Toast.fail('操作失败，请重试!', 1);
         }
       } else {
         const contactExit = value.phone || value.qq || value.wechat;
         if (!contactExit) {
-          Toast.fail('请至少留下一种联系方式！');
+          Toast.fail('请至少留下一种联系方式!', 1);
         } else {
           PostPageStore.genPostData(value);
           // Initial commit or update according to the router params.
