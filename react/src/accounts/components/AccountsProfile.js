@@ -36,7 +36,7 @@ class AccountsProfile extends React.Component {
       </Tabs>);
     return (
       <div>
-        <NavBar title="用户信息" showAddIcon />
+        <NavBar title="用户信息" />
         <StickyContainer>
           {tabsComponent}
         </StickyContainer>

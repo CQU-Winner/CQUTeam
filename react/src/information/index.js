@@ -40,7 +40,7 @@ export default class Information extends React.Component {
     render() {
         return (
             <div className="info-container">
-                <NavBar title="竞赛资讯" showAddIcon />
+                <NavBar title="竞赛资讯" />
                 <SearchBar
                     placeholder="搜索竞赛"
                     defaultValue={store.wd}
