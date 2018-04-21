@@ -15,7 +15,6 @@ class PostPageStore {
   @observable postData = {};
 
   @action genInitData(data) {
-    console.log(data);
     const { compet, demand, title, contact } = data;
     this.initData.title = title;
     this.initData.cname = compet.title;
