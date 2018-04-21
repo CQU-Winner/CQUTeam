@@ -92,7 +92,7 @@ const config = {
 
     plugins: [
         new ExtractTextPlugin({
-            filename: '/[name].[contenthash].css',
+            filename: 'http://www.cquwinner.com/[name].[contenthash].css',
             disable: DEV
         }),
         new HtmlWebpackPlugin({
@@ -101,7 +101,7 @@ const config = {
         }),
         new webpack.optimize.CommonsChunkPlugin({
             names: ['vendor'],
-            filename: DEV ? 'vendor.js' : '/vendor-[chunkhash].js',
+            filename: DEV ? 'vendor.js' : 'http://www.cquwinner.com/vendor-[chunkhash].js',
           }),
     ],
 }
