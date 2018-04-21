@@ -83,7 +83,11 @@ export default class Information extends React.Component {
                 <List className="info-list">
                     {store.loadFailed || store.isRefreshing ?
                         <List.Item onClick={store.loadFailed && store.refresh()}>
-                            <div style={{ textAlign: 'center', lineHeight: '100px' }}>
+                            <div style={{ 
+                                textAlign: 'center', 
+                                lineHeight: '100px',
+                                marginBottom: '30px', 
+                            }}>
                                 {store.loadFailed ? '出错了😣 请点击重试' : <Loader />}
                             </div>
                         </List.Item>
