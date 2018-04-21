@@ -30,7 +30,7 @@ class PostPageStore {
       name: data.cname,
       type: data.ctype,
       url: data.curl,
-      ddl: data.cddl,
+      ddl: data.cddl.toLocaleDateString(),
     };
     this.postData.intro = data.demand;
     this.postData.demand = data.demand;
