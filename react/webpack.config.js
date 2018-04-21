@@ -25,7 +25,7 @@ const config = {
 
     output: {
         path: __dirname + '/static',
-        filename: DEV ? '[name].js' : '[name].[chunkhash].js',
+        filename: DEV ? '[name].js' : 'http://www.cquwinner.com/[name].[chunkhash].js',
     },
 
     devServer: {
