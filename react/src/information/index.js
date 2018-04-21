@@ -8,6 +8,7 @@ import { InfomationStore } from './stores';
 import RadioBar from './components/RadioBar';
 import Pagination from '../shared/Pagination/Pagination.js';
 import { competTypes } from '../shared/consts';
+import Loader from '../shared/loader';
 import '../shared/NavBar/TopNavBar.less';
 import './index.less';
 
@@ -83,7 +84,7 @@ export default class Information extends React.Component {
                     {store.loadFailed || store.isRefreshing ?
                         <List.Item onClick={store.loadFailed && store.refresh()}>
                             <div style={{ textAlign: 'center', lineHeight: '100px' }}>
-                                {store.loadFailed ? '出错了😣 请点击重试' : '加载中...'}
+                                {store.loadFailed ? '出错了😣 请点击重试' : <Loader />}
                             </div>
                         </List.Item>
                     : store.compets.map(item => (
