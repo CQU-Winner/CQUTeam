@@ -9,20 +9,24 @@ class PostPageStore {
     curl: '',
     demand: '需求描述',
     phone: '',
-    wechat: '',
     qq: '',
+    wechat: '',
   };
   @observable postData = {};
 
   @action genInitData(data) {
     console.log(data);
-    const { compet, demand, title } = data;
+    const { compet, demand, title, contact } = data;
     this.initData.title = title;
     this.initData.cname = compet.title;
     this.initData.curl = compet.url;
     this.initData.ctype = compet.type;
     this.initData.cddl = compet.ddl;
     this.initData.demand = demand;
+    const [phone, qq, wechat] = contact.split(',');
+    this.initData.phone = phone;
+    this.initData.qq = qq;
+    this.initData.wechat = wechat;
   }
 
   @action genPostData(data) {

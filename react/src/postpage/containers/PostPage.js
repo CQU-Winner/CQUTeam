@@ -148,16 +148,6 @@ class PostPage extends React.Component {
            手机号
           </InputItem>
           <InputItem
-            {...getFieldProps('wechat', {
-              initialValue: initData.wechat,
-            })}
-            clear
-            placeholder="选填"
-            maxLength={15}
-          >
-           微信号
-          </InputItem>
-          <InputItem
             {...getFieldProps('qq', {
               initialValue: initData.qq,
             })}
@@ -167,6 +157,16 @@ class PostPage extends React.Component {
             maxLength={16}
           >
            qq号
+          </InputItem>
+          <InputItem
+            {...getFieldProps('wechat', {
+              initialValue: initData.wechat,
+            })}
+            clear
+            placeholder="选填"
+            maxLength={15}
+          >
+            微信号
           </InputItem>
 
           <Button
