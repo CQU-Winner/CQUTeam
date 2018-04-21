@@ -83,7 +83,9 @@ class TeamsDetail extends React.Component {
             <p>比赛名称:{compet.title}</p>
             <p>比赛类别:{compet.type}</p>
             <p>比赛截止时间:{compet.ddl}</p>
-            <p>比赛详情:{compet.url}</p>
+            <p>比赛详情:{
+              compet.url && <a href={compet.url}>点击查看</a>}
+            </p>
           </div>
           {this.renderCardTitle('招募需求')}
           <div className="card-content">
