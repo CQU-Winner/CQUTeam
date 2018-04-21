@@ -1,7 +1,7 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import { List } from 'antd-mobile';
-import Loader from '../../shared/loader';
+import Loader from '../../shared/Loader/loader';
 import TeamsList from '../components/TeamsList';
 import OrderingSwitchContainer from './OrderingSwitchContainer';
 import TeamsStore from '../stores/TeamsStore';

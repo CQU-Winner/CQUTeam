@@ -8,7 +8,7 @@ import { InfomationStore } from './stores';
 import RadioBar from './components/RadioBar';
 import Pagination from '../shared/Pagination/Pagination.js';
 import { competTypes } from '../shared/consts';
-import Loader from '../shared/loader';
+import Loader from '../shared/Loader/loader';
 import '../shared/NavBar/TopNavBar.less';
 import './index.less';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavBar, Icon } from 'antd-mobile';
 import axios from 'axios';
-import Loader from '../../shared/loader';
+import Loader from '../../shared/Loader/loader';
 import { apiRoute } from '../../shared/consts';
 import '../../shared/NavBar/TopNavBar.less';
 import './index.less';

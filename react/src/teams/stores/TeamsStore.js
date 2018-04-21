@@ -1,6 +1,5 @@
 import { observable, action, computed } from 'mobx';
 import axios from 'axios';
-import { Promise } from 'core-js';
 import { apiRoute } from '../../shared/consts';
 
 class TeamsStore {

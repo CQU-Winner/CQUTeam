@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { List, Button, Modal, Toast } from 'antd-mobile';
+import { List, Modal, Toast } from 'antd-mobile';
 import TeamsDetailStore from '../stores/TeamsDetailStore';
 import '../style/TeamsDetail.less';
 
@@ -14,7 +14,7 @@ class TeamsDetail extends React.Component {
   deleteAlert = () => {
     const { alert } = Modal;
     const { teamId } = this.props.match.params;
-    const alertInstance = alert('关闭招募', '确定要关闭此招募吗？', [
+    alert('关闭招募', '确定要关闭此招募吗？', [
       { text: '取消', onPress: () => {}, style: 'default' },
       { text: '确认',
         onPress: () => { 
