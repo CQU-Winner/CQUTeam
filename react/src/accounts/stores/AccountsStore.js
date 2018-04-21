@@ -22,7 +22,7 @@ class AccountsStore {
             this.historyList = list.data.data;
           });
       } else {
-        window.location.href = `${apiRoute}wechat/login/accounts/self`;
+        window.location.href = `${apiRoute}wechat/login/`;
       }
     });
   }
