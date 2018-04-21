@@ -8,9 +8,11 @@ class TeamsDetailStore {
   @observable detail = {};
 
   @action fetchDetail(id) {
+    this.loading = true;
     const url = `${apiRoute}groups/${id}`;
     axios.get(url).then((res) => {
       this.detail = res.data;
+      this.loading = false;
     }).catch(() => {
       this.error = true;
     });
