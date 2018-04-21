@@ -121,6 +121,7 @@ class PostPage extends React.Component {
               initialValue: initData.demand,
               rules: [{ required: true }],       
             })}
+            placeholder="嗯...要招募什么类型的队友呢，让我想想..."
             rows={4}
             count={100}
           />

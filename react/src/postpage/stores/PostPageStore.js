@@ -7,7 +7,7 @@ class PostPageStore {
     title: '',
     cname: '',
     curl: '',
-    demand: '需求描述',
+    demand: '',
     phone: '',
     qq: '',
     wechat: '',
