@@ -103,9 +103,9 @@ class TeamsDetail extends React.Component {
           </List>
           {this.renderCardTitle('联系方式')}
           <div className="card-content">
-            <p>手机号:{phone || ''}</p>
-            <p>qq:{qq || ''}</p>
-            <p>微信:{wechat || ''}</p>
+            { phone ? <p>手机号:{phone}</p> : null }
+            { qq ? <p>qq:{qq}</p> : null }
+            { wechat ? <p>微信:{wechat}</p> : null }
           </div>
           {
             self ? 

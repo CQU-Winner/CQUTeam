@@ -96,7 +96,7 @@ class PostPage extends React.Component {
               initialValue: initData.curl,
             })}
             clear
-            placeholder="比赛详情链接"
+            placeholder="比赛详情链接(url)"
             maxLength={100}
           >
             比赛链接
@@ -136,7 +136,7 @@ class PostPage extends React.Component {
             className="am-list-header"
             style={{ background: '#f5f5f9' }}
           >
-            联系方式
+            联系方式(请至少留下一种)
           </div>
           <InputItem
             {...getFieldProps('phone', {
